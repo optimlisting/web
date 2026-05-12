@@ -9,7 +9,7 @@
     "./components/*": "./src/components/*.tsx",
     "./lib/*": "./src/lib/*.ts",
     "./styles/*": "./src/styles/*",
-    "./globals.css": "./src/styles/globals.css",
+    "./styles/globals.css": "./src/styles/globals.css",
     "./postcss.config": "./postcss.config.mjs"
   },
   "scripts": {
