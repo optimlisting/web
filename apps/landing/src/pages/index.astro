@@ -1,0 +1,520 @@
+---
+import Layout from '../layouts/Layout.astro';
+---
+
+<Layout 
+  title="AI-Powered Listing Optimizer for Etsy, eBay & Amazon"
+  description="Boost your marketplace sales with AI-optimized titles, descriptions, and tags. Get found by more buyers and increase your revenue."
+>
+  <!-- Navigation -->
+  <nav class="border-b border-gray-100">
+    <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="flex justify-between items-center h-16">
+        <div class="flex items-center gap-1.5">
+          <img src="/optim-logo.svg" alt="OptimListing" class="h-6" />
+          <span class="text-xl font-bold text-brand-600">OptimListing</span>
+        </div>
+        <div class="hidden sm:flex items-center gap-6">
+          <a href="#features" class="text-sm text-gray-600 hover:text-gray-900 transition">Features</a>
+          <a href="#pricing" class="text-sm text-gray-600 hover:text-gray-900 transition">Pricing</a>
+          <a href="#faq" class="text-sm text-gray-600 hover:text-gray-900 transition">FAQ</a>
+          <a href="/sign-in" class="text-sm font-medium text-brand-600 hover:text-brand-700 transition">Sign In</a>
+          <a href="/signup" class="text-sm font-medium bg-brand-600 text-white px-4 py-2 rounded-lg hover:bg-brand-700 transition">
+            Start Free
+          </a>
+        </div>
+      </div>
+    </div>
+  </nav>
+
+  <!-- Hero Section -->
+  <section class="pt-20 pb-16 sm:pt-28 sm:pb-20">
+    <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="max-w-3xl mx-auto text-center">
+        <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-brand-50 border border-brand-200 text-brand-700 text-sm mb-6">
+          <span class="relative flex h-2 w-2">
+            <span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-brand-400 opacity-75"></span>
+            <span class="relative inline-flex rounded-full h-2 w-2 bg-brand-500"></span>
+          </span>
+          Now supporting Etsy. eBay & Amazon coming soon.
+        </div>
+        <h1 class="text-4xl sm:text-5xl font-bold tracking-tight text-gray-900 mb-6 leading-tight">
+          Get Found. Get Clicked. Get Sold.
+          <span class="text-brand-600">AI-Optimized Listings</span>
+        </h1>
+        <p class="text-lg text-gray-600 mb-8 max-w-2xl mx-auto leading-relaxed">
+          OptimListing automatically rewrites your marketplace titles, descriptions, and tags using AI trained on what actually ranks. Get more views, more clicks, and more sales.
+        </p>
+        <div class="flex flex-col sm:flex-row gap-4 justify-center mb-8">
+          <a href="/signup" class="bg-brand-600 text-white px-8 py-3 rounded-lg font-medium hover:bg-brand-700 transition text-sm">
+            Start Optimizing Free →
+          </a>
+          <a href="#how-it-works" class="border border-gray-300 text-gray-700 px-8 py-3 rounded-lg font-medium hover:border-gray-400 transition text-sm">
+            See How It Works
+          </a>
+        </div>
+        <p class="text-xs text-gray-500">No credit card required • Optimize 5 listings free</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Before/After Comparison -->
+  <section class="py-16 bg-gray-50" id="how-it-works">
+    <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="text-center mb-12">
+        <h2 class="text-2xl font-bold text-gray-900 mb-4">See the Difference AI Makes</h2>
+        <p class="text-gray-600 max-w-2xl mx-auto text-sm">
+          One click transforms underwhelming listings into search-optimized, buyer-ready product pages.
+        </p>
+      </div>
+      
+      <div class="grid md:grid-cols-2 gap-8 max-w-4xl mx-auto">
+        <!-- Before -->
+        <div class="bg-white rounded-xl p-6 border border-red-100 shadow-sm">
+          <div class="flex items-center gap-2 mb-4">
+            <span class="w-6 h-6 rounded-full bg-red-100 flex items-center justify-center text-red-600 text-xs font-bold">✕</span>
+            <span class="text-sm font-medium text-red-700">Before</span>
+          </div>
+          <div class="space-y-3">
+            <div>
+              <p class="text-xs text-gray-400 mb-1">Title</p>
+              <p class="text-sm text-gray-700">Cute Blue Vase - Handmade Ceramic Vase for Home Decor</p>
+            </div>
+            <div>
+              <p class="text-xs text-gray-400 mb-1">Description</p>
+              <p class="text-sm text-gray-500">This is a nice blue vase that I made. It looks good on a shelf or table. Good for flowers or just decoration. It's about 8 inches tall.</p>
+            </div>
+            <div>
+              <p class="text-xs text-gray-400 mb-1">Tags</p>
+              <div class="flex flex-wrap gap-1">
+                <span class="text-xs bg-gray-100 px-2 py-0.5 rounded text-gray-600">vase</span>
+                <span class="text-xs bg-gray-100 px-2 py-0.5 rounded text-gray-600">blue</span>
+                <span class="text-xs bg-gray-100 px-2 py-0.5 rounded text-gray-600">ceramic</span>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- After -->
+        <div class="bg-white rounded-xl p-6 border border-green-100 shadow-sm">
+          <div class="flex items-center gap-2 mb-4">
+            <span class="w-6 h-6 rounded-full bg-green-100 flex items-center justify-center text-green-600 text-xs font-bold">✓</span>
+            <span class="text-sm font-medium text-green-700">After</span>
+          </div>
+          <div class="space-y-3">
+            <div>
+              <p class="text-xs text-gray-400 mb-1">Title</p>
+              <p class="text-sm text-gray-900 font-medium">Handmade Ceramic Glazed Vase | Coastal Blue Table Centerpiece | 8" Modern Boho Home Decor | Gift for Housewarming</p>
+            </div>
+            <div>
+              <p class="text-xs text-gray-400 mb-1">Description</p>
+              <p class="text-sm text-gray-700">Elevate your space with this handcrafted 8-inch ceramic vase in a serene coastal blue glaze. Perfect as a standalone centerpiece on dining tables, mantels, or shelves. Ideal for fresh flowers, dried botanicals, or as sculptural decor. Each piece is wheel-thrown and kiln-fired for lasting beauty...</p>
+            </div>
+            <div>
+              <p class="text-xs text-gray-400 mb-1">Tags</p>
+              <div class="flex flex-wrap gap-1">
+                <span class="text-xs bg-brand-50 px-2 py-0.5 rounded text-brand-700">handmade vase</span>
+                <span class="text-xs bg-brand-50 px-2 py-0.5 rounded text-brand-700">ceramic decor</span>
+                <span class="text-xs bg-brand-50 px-2 py-0.5 rounded text-brand-700">boho home</span>
+                <span class="text-xs bg-brand-50 px-2 py-0.5 rounded text-brand-700">coastal blue</span>
+                <span class="text-xs bg-brand-50 px-2 py-0.5 rounded text-brand-700">housewarming gift</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Features -->
+  <section class="py-16" id="features">
+    <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="text-center mb-12">
+        <h2 class="text-2xl font-bold text-gray-900 mb-4">Built for Marketplace Sellers</h2>
+        <p class="text-gray-600 max-w-2xl mx-auto text-sm">
+          Every feature is designed to get your products found by the right buyers.
+        </p>
+      </div>
+      
+      <div class="grid md:grid-cols-3 gap-8">
+        <div class="text-center">
+          <div class="w-12 h-12 bg-brand-50 rounded-xl flex items-center justify-center mx-auto mb-4">
+            <svg class="w-6 h-6 text-brand-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 7h8m0 0v8m0-8l-8 8-4-4-6 6"/>
+            </svg>
+          </div>
+          <h3 class="font-semibold text-gray-900 mb-2">SEO-Optimized Titles</h3>
+          <p class="text-sm text-gray-600">AI crafts keyword-rich titles that match how buyers actually search on each marketplace.</p>
+        </div>
+
+        <div class="text-center">
+          <div class="w-12 h-12 bg-brand-50 rounded-xl flex items-center justify-center mx-auto mb-4">
+            <svg class="w-6 h-6 text-brand-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"/>
+            </svg>
+          </div>
+          <h3 class="font-semibold text-gray-900 mb-2">Compelling Descriptions</h3>
+          <p class="text-sm text-gray-600">Turn bullet points into persuasive product stories that convert browsers into buyers.</p>
+        </div>
+
+        <div class="text-center">
+          <div class="w-12 h-12 bg-brand-50 rounded-xl flex items-center justify-center mx-auto mb-4">
+            <svg class="w-6 h-6 text-brand-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M7 7h.01M7 3h5c.512 0 1.024.195 1.414.586l7 7a2 2 0 010 2.828l-7 7a2 2 0 01-2.828 0l-7-7A1.994 1.994 0 013 12V7a4 4 0 014-4z"/>
+            </svg>
+          </div>
+          <h3 class="font-semibold text-gray-900 mb-2">Smart Tag Generation</h3>
+          <p class="text-sm text-gray-600">Never waste a tag slot again. AI fills all 13 Etsy tags with high-traffic, relevant keywords.</p>
+        </div>
+
+        <div class="text-center">
+          <div class="w-12 h-12 bg-brand-50 rounded-xl flex items-center justify-center mx-auto mb-4">
+            <svg class="w-6 h-6 text-brand-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 7v10c0 2 1 3 3 3h10c2 0 3-1 3-3V7M4 7c0-2 1-3 3-3h10c2 0 3 1 3 3M4 7h16"/>
+            </svg>
+          </div>
+          <h3 class="font-semibold text-gray-900 mb-2">Multi-Platform Support</h3>
+          <p class="text-sm text-gray-600">Optimize for Etsy, eBay, and Amazon. Each platform has its own ranking algorithm.</p>
+        </div>
+
+        <div class="text-center">
+          <div class="w-12 h-12 bg-brand-50 rounded-xl flex items-center justify-center mx-auto mb-4">
+            <svg class="w-6 h-6 text-brand-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z"/>
+            </svg>
+          </div>
+          <h3 class="font-semibold text-gray-900 mb-2">Instant Results</h3>
+          <p class="text-sm text-gray-600">Paste a URL, get optimized content in seconds. No manual research required.</p>
+        </div>
+
+        <div class="text-center">
+          <div class="w-12 h-12 bg-brand-50 rounded-xl flex items-center justify-center mx-auto mb-4">
+            <svg class="w-6 h-6 text-brand-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z"/>
+            </svg>
+          </div>
+          <h3 class="font-semibold text-gray-900 mb-2">Safe & Secure</h3>
+          <p class="text-sm text-gray-600">We never modify your live listings. You review and approve every change.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Store Connection Feature -->
+  <section class="py-16" id="store-connection">
+    <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="grid md:grid-cols-2 gap-12 items-center">
+        <div>
+          <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-green-50 border border-green-200 text-green-700 text-sm mb-6">
+            <span class="relative flex h-2 w-2">
+              <span class="relative inline-flex rounded-full h-2 w-2 bg-green-500"></span>
+            </span>
+            Etsy integration live
+          </div>
+          <h2 class="text-2xl font-bold text-gray-900 mb-4">
+            Connect Your Store. <span class="text-brand-600">Audit Everything.</span>
+          </h2>
+          <p class="text-gray-600 text-sm mb-6 leading-relaxed">
+            Stop copying and pasting one listing at a time. Connect your Etsy shop with one click, and OptimListing automatically scans every listing. Get an SEO score for each product, see exactly which ones need work, and bulk-optimize them all at once.
+          </p>
+          <ul class="space-y-3 mb-6">
+            <li class="flex items-start gap-2 text-sm text-gray-700">
+              <span class="text-green-500 mt-0.5">✓</span>
+              One-click Etsy shop connection — no manual setup
+            </li>
+            <li class="flex items-start gap-2 text-sm text-gray-700">
+              <span class="text-green-500 mt-0.5">✓</span>
+              AI audits every listing in your shop automatically
+            </li>
+            <li class="flex items-start gap-2 text-sm text-gray-700">
+              <span class="text-green-500 mt-0.5">✓</span>
+              Bulk-select poor performers and optimize them all at once
+            </li>
+            <li class="flex items-start gap-2 text-sm text-gray-700">
+              <span class="text-green-500 mt-0.5">✓</span>
+              eBay & Amazon coming soon
+            </li>
+          </ul>
+          <a href="/signup?plan=starter" class="inline-block bg-brand-600 text-white px-6 py-2.5 rounded-lg font-medium hover:bg-brand-700 transition text-sm">
+            Connect Your Store →
+          </a>
+        </div>
+        <div class="bg-gray-100 rounded-2xl p-8">
+          <!-- Audit preview illustration -->
+          <div class="space-y-3">
+            <div class="flex items-center gap-2 mb-4">
+              <span class="w-3 h-3 rounded-full bg-green-500"></span>
+              <span class="text-sm font-medium text-gray-700">Store Audit Results</span>
+            </div>
+            <div class="bg-white rounded-lg p-3 flex items-center justify-between">
+              <div>
+                <p class="text-sm font-medium text-gray-900">Handmade Ceramic Vase</p>
+                <p class="text-xs text-gray-500">Tags: 4 · Score: 42</p>
+              </div>
+              <span class="text-xs bg-red-100 text-red-700 px-2 py-0.5 rounded-full">Poor</span>
+            </div>
+            <div class="bg-white rounded-lg p-3 flex items-center justify-between">
+              <div>
+                <p class="text-sm font-medium text-gray-900">Organic Linen Throw</p>
+                <p class="text-xs text-gray-500">Tags: 11 · Score: 88</p>
+              </div>
+              <span class="text-xs bg-green-100 text-green-700 px-2 py-0.5 rounded-full">Good</span>
+            </div>
+            <div class="bg-white rounded-lg p-3 flex items-center justify-between">
+              <div>
+                <p class="text-sm font-medium text-gray-900">Wool Knit Blanket</p>
+                <p class="text-xs text-gray-500">Tags: 2 · Score: 31</p>
+              </div>
+              <span class="text-xs bg-red-100 text-red-700 px-2 py-0.5 rounded-full">Poor</span>
+            </div>
+            <div class="bg-white rounded-lg p-3 flex items-center justify-between border-2 border-brand-300">
+              <div>
+                <p class="text-sm font-medium text-gray-900">Vintage Wall Clock</p>
+                <p class="text-xs text-gray-500">Tags: 7 · Score: 64</p>
+              </div>
+              <span class="text-xs bg-yellow-100 text-yellow-700 px-2 py-0.5 rounded-full">Needs Work</span>
+            </div>
+            <div class="flex items-center gap-2 pt-2">
+              <input type="checkbox" checked class="rounded" />
+              <span class="text-xs text-gray-600">2 selected</span>
+              <span class="ml-auto text-xs bg-brand-600 text-white px-3 py-1 rounded-full">Optimize Selected</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Pricing -->
+  <section class="py-16 bg-gray-50" id="pricing">
+    <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="text-center mb-12">
+        <h2 class="text-2xl font-bold text-gray-900 mb-4">Simple, Transparent Pricing</h2>
+        <p class="text-gray-600 max-w-2xl mx-auto text-sm">
+          Start free. Upgrade when you're ready to scale.
+        </p>
+      </div>
+
+      <div class="grid md:grid-cols-3 gap-8 max-w-5xl mx-auto">
+        <!-- Free Tier -->
+        <div class="bg-white rounded-xl p-6 border border-gray-200 shadow-sm">
+          <div class="mb-4">
+            <h3 class="text-lg font-semibold text-gray-900">Free</h3>
+            <p class="text-sm text-gray-600 mt-1">Try it out</p>
+          </div>
+          <div class="mb-4">
+            <span class="text-3xl font-bold text-gray-900">$0</span>
+            <span class="text-gray-500 text-sm">/month</span>
+          </div>
+          <ul class="space-y-3 mb-6">
+            <li class="flex items-center gap-2 text-sm text-gray-600">
+              <span class="text-green-500 flex-shrink-0">✓</span> 3 listing optimizations
+            </li>
+            <li class="flex items-center gap-2 text-sm text-gray-600">
+              <span class="text-green-500 flex-shrink-0">✓</span> 1 platform
+            </li>
+            <li class="flex items-center gap-2 text-sm text-gray-600">
+              <span class="text-green-500 flex-shrink-0">✓</span> Basic AI optimization
+            </li>
+          </ul>
+          <a href="/dashboard/signup" class="block text-center border border-gray-300 text-gray-700 py-2 rounded-lg font-medium hover:border-gray-400 transition text-sm">
+            Get Started
+          </a>
+        </div>
+
+        <!-- Starter Plan - Highlighted -->
+        <div class="bg-white rounded-xl p-6 border-2 border-brand-500 shadow-lg relative">
+          <div class="absolute -top-3 left-1/2 transform -translate-x-1/2">
+            <span class="bg-brand-500 text-white text-xs font-medium px-3 py-1 rounded-full">Most Popular</span>
+          </div>
+          <div class="mb-4">
+            <h3 class="text-lg font-semibold text-gray-900">Starter</h3>
+            <p class="text-sm text-gray-600 mt-1">For growing shops</p>
+          </div>
+          <div class="mb-4">
+            <span class="text-3xl font-bold text-gray-900">$9</span>
+            <span class="text-gray-500 text-sm">/month</span>
+          </div>
+          <ul class="space-y-3 mb-6">
+            <li class="flex items-center gap-2 text-sm text-gray-600">
+              <span class="text-green-500 flex-shrink-0">✓</span> 15 listing optimizations
+            </li>
+            <li class="flex items-center gap-2 text-sm text-gray-600">
+              <span class="text-green-500 flex-shrink-0">✓</span> 1 platform of choice
+            </li>
+            <li class="flex items-center gap-2 text-sm text-gray-600">
+              <span class="text-green-500 flex-shrink-0">✓</span> Advanced AI optimization
+            </li>
+            <li class="flex items-center gap-2 text-sm text-gray-600">
+              <span class="text-green-500 flex-shrink-0">✓</span> Bulk processing
+            </li>
+            <li class="flex items-center gap-2 text-sm text-gray-600">
+              <span class="text-green-500 flex-shrink-0">✓</span> Connect your store
+            </li>
+          </ul>
+          <a href="/dashboard/signup?plan=starter" class="block text-center bg-brand-600 text-white py-2 rounded-lg font-medium hover:bg-brand-700 transition text-sm">
+            Get Started
+          </a>
+        </div>
+
+        <!-- Pro Tier -->
+        <div class="bg-white rounded-xl p-6 border border-gray-200 shadow-sm">
+          <div class="mb-4">
+            <h3 class="text-lg font-semibold text-gray-900">Professional</h3>
+            <p class="text-sm text-gray-600 mt-1">For power sellers</p>
+          </div>
+          <div class="mb-4">
+            <span class="text-3xl font-bold text-gray-900">$16</span>
+            <span class="text-gray-500 text-sm">/month</span>
+          </div>
+          <ul class="space-y-3 mb-6">
+            <li class="flex items-center gap-2 text-sm text-gray-600">
+              <span class="text-green-500 flex-shrink-0">✓</span> Unlimited optimizations
+            </li>
+            <li class="flex items-center gap-2 text-sm text-gray-600">
+              <span class="text-green-500 flex-shrink-0">✓</span> All platforms supported
+            </li>
+            <li class="flex items-center gap-2 text-sm text-gray-600">
+              <span class="text-green-500 flex-shrink-0">✓</span> Priority AI processing
+            </li>
+            <li class="flex items-center gap-2 text-sm text-gray-600">
+              <span class="text-green-500 flex-shrink-0">✓</span> CSV bulk import
+            </li>
+            <li class="flex items-center gap-2 text-sm text-gray-600">
+              <span class="text-green-500 flex-shrink-0">✓</span> Store integration
+            </li>
+            <li class="flex items-center gap-2 text-sm text-gray-500">
+              <span class="text-gray-400 flex-shrink-0">•</span> eBay & Amazon (coming soon)
+            </li>
+          </ul>
+          <a href="/dashboard/signup?plan=pro" class="block text-center border border-gray-300 text-gray-700 py-2 rounded-lg font-medium hover:border-gray-400 transition text-sm">
+            Get Started
+          </a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FAQ -->
+  <section class="py-16" id="faq">
+    <div class="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="text-center mb-12">
+        <h2 class="text-2xl font-bold text-gray-900 mb-4">Frequently Asked Questions</h2>
+        <p class="text-gray-600 max-w-2xl mx-auto text-sm">
+          Everything you need to know about OptimListing.
+        </p>
+      </div>
+
+      <div class="space-y-4">
+        <details class="group bg-white rounded-xl border border-gray-200 shadow-sm">
+          <summary class="flex items-center justify-between p-5 cursor-pointer">
+            <span class="text-sm font-medium text-gray-900">How does the AI optimization work?</span>
+            <svg class="w-5 h-5 text-gray-400 group-open:rotate-180 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/>
+            </svg>
+          </summary>
+          <div class="px-5 pb-5 text-sm text-gray-600 leading-relaxed">
+            Paste your listing title, description, and tags into our tool. Our AI analyzes your content against marketplace SEO best practices and generates optimized versions that rank higher in search results. You review and approve every change before publishing.
+          </div>
+        </details>
+
+        <details class="group bg-white rounded-xl border border-gray-200 shadow-sm">
+          <summary class="flex items-center justify-between p-5 cursor-pointer">
+            <span class="text-sm font-medium text-gray-900">Which platforms do you support?</span>
+            <svg class="w-5 h-5 text-gray-400 group-open:rotate-180 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/>
+            </svg>
+          </summary>
+          <div class="px-5 pb-5 text-sm text-gray-600 leading-relaxed">
+            We currently support Etsy with full store integration. You can connect your shop and audit all your listings at once. eBay and Amazon are coming soon. You can still manually paste listings from any platform.
+          </div>
+        </details>
+
+        <details class="group bg-white rounded-xl border border-gray-200 shadow-sm">
+          <summary class="flex items-center justify-between p-5 cursor-pointer">
+            <span class="text-sm font-medium text-gray-900">Can I connect my Etsy store?</span>
+            <svg class="w-5 h-5 text-gray-400 group-open:rotate-180 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/>
+            </svg>
+          </summary>
+          <div class="px-5 pb-5 text-sm text-gray-600 leading-relaxed">
+            Yes! On the Starter or Professional plan, you can connect your Etsy shop with one click. OptimListing will scan all your active listings, give each one an SEO score, and let you bulk-optimize the ones that need improvement. We use Etsy's official API — your data is secure and we never modify listings without your approval.
+          </div>
+        </details>
+
+        <details class="group bg-white rounded-xl border border-gray-200 shadow-sm">
+          <summary class="flex items-center justify-between p-5 cursor-pointer">
+            <span class="text-sm font-medium text-gray-900">How much does it cost?</span>
+            <svg class="w-5 h-5 text-gray-400 group-open:rotate-180 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/>
+            </svg>
+          </summary>
+          <div class="px-5 pb-5 text-sm text-gray-600 leading-relaxed">
+            You can start for free with 3 optimizations per month. The Starter plan is $9/month for 15 optimizations and store connection. The Professional plan is $16/month for unlimited optimizations and all platforms. No hidden fees. Cancel anytime.
+          </div>
+        </details>
+
+        <details class="group bg-white rounded-xl border border-gray-200 shadow-sm">
+          <summary class="flex items-center justify-between p-5 cursor-pointer">
+            <span class="text-sm font-medium text-gray-900">Will this actually increase my sales?</span>
+            <svg class="w-5 h-5 text-gray-400 group-open:rotate-180 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/>
+            </svg>
+          </summary>
+          <div class="px-5 pb-5 text-sm text-gray-600 leading-relaxed">
+            Marketplace search algorithms reward well-optimized listings with higher rankings. Better titles, descriptions, and tags mean more buyers find your products. While we can't guarantee specific results, our AI applies proven SEO techniques that top sellers use. Most users see improved visibility within days of updating their listings.
+          </div>
+        </details>
+
+        <details class="group bg-white rounded-xl border border-gray-200 shadow-sm">
+          <summary class="flex items-center justify-between p-5 cursor-pointer">
+            <span class="text-sm font-medium text-gray-900">Is my data safe?</span>
+            <svg class="w-5 h-5 text-gray-400 group-open:rotate-180 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/>
+            </svg>
+          </summary>
+          <div class="px-5 pb-5 text-sm text-gray-600 leading-relaxed">
+            Absolutely. We use Etsy's official API with OAuth authentication — we never see your password. Your listing data is encrypted and stored securely. We don't share or sell your data. You can delete your account and all data at any time. Read our Privacy Policy for full details.
+          </div>
+        </details>
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA -->
+  <section class="py-16 bg-brand-600">
+    <div class="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+      <h2 class="text-2xl font-bold text-white mb-4">Ready to Get More Sales?</h2>
+      <p class="text-brand-100 mb-8 max-w-xl mx-auto text-sm">
+        Join hundreds of sellers who use OptimListing to rank higher and sell more. Start your free trial today.
+      </p>
+      <a href="/signup" class="inline-block bg-white text-brand-700 px-8 py-3 rounded-lg font-medium hover:bg-brand-50 transition text-sm">
+        Start Optimizing Free →
+      </a>
+      <p class="text-brand-200 text-xs mt-4">No credit card required • Optimize 5 listings free</p>
+    </div>
+  </section>
+
+  <!-- Etsy Disclaimer -->
+  <section class="py-8">
+    <div class="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+      <p class="text-xs text-gray-400 leading-relaxed">
+        The term "Etsy" is a trademark of Etsy, Inc. This application uses the Etsy API but is not endorsed or certified by Etsy, Inc.
+      </p>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer class="py-12 border-t border-gray-100">
+    <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="flex flex-col sm:flex-row justify-between items-center gap-4">
+        <p class="text-sm text-gray-500">© 2026 OptimListing. All rights reserved.</p>
+        <div class="flex gap-6">
+          <a href="/privacy" class="text-sm text-gray-500 hover:text-gray-700 transition">Privacy Policy</a>
+          <a href="/terms" class="text-sm text-gray-500 hover:text-gray-700 transition">Terms of Service</a>
+          <a href="mailto:support@optimlisting.com" class="text-sm text-gray-500 hover:text-gray-700 transition">Contact</a>
+        </div>
+      </div>
+    </div>
+  </footer>
+</Layout>

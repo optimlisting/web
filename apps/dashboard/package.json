@@ -1,0 +1,44 @@
+{
+  "name": "dashboard",
+  "version": "0.1.0",
+  "type": "module",
+  "private": true,
+  "scripts": {
+    "dev": "next dev --port 3000",
+    "build": "next build",
+    "start": "next start",
+    "lint": "eslint --max-warnings 0",
+    "check-types": "next typegen && tsc --noEmit"
+  },
+  "dependencies": {
+    "@dodopayments/nextjs": "^0.3.6",
+    "@hookform/resolvers": "^5.2.2",
+    "@optim/ai": "workspace:*",
+    "@optim/auth": "workspace:*",
+    "@optim/connections": "workspace:*",
+    "@optim/db": "workspace:*",
+    "@optim/email": "workspace:*",
+    "@optim/subscription": "workspace:*",
+    "@optim/ui": "workspace:*",
+    "bcryptjs": "^3.0.3",
+    "better-auth": "^1.6.9",
+    "lucide-react": "^1.14.0",
+    "next": "16.2.0",
+    "react": "^19.2.0",
+    "react-dom": "^19.2.0",
+    "react-hook-form": "^7.74.0",
+    "sonner": "^2.0.7",
+    "zod": "^4.3.6"
+  },
+  "devDependencies": {
+    "@repo/eslint-config": "workspace:*",
+    "@repo/typescript-config": "workspace:*",
+    "@tailwindcss/postcss": "^4.2.4",
+    "@types/node": "^22.15.3",
+    "@types/react": "19.2.2",
+    "@types/react-dom": "19.2.2",
+    "eslint": "^9.39.1",
+    "tailwindcss": "^4.2.4",
+    "typescript": "5.9.2"
+  }
+}

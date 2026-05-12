@@ -4,6 +4,11 @@
   "scripts": {
     "build": "turbo run build",
     "dev": "turbo run dev",
+    "dev:landing": "turbo run dev --filter=landing",
+    "dev:dashboard": "turbo run dev --filter=dashboard",
+    "db:push": "pnpm --filter @optim/db run db:push",
+    "db:generate": "pnpm --filter @optim/db run db:generate",
+    "db:studio": "pnpm --filter @optim/db run db:studio",
     "lint": "turbo run lint",
     "format": "prettier --write \"**/*.{ts,tsx,md}\"",
     "check-types": "turbo run check-types"
@@ -16,5 +21,13 @@
   "packageManager": "pnpm@9.0.0",
   "engines": {
     "node": ">=18"
+  },
+  "pnpm": {
+    "overrides": {
+      "vite": "^7",
+      "next": "16.2.4",
+      "next-auth": "5.0.0-beta.31",
+      "@auth/core": "0.41.2"
+    }
   }
 }
