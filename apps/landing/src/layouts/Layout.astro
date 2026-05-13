@@ -37,14 +37,20 @@ const gaId = import.meta.env.PUBLIC_GA_ID;
     <meta property="twitter:image" content="/og-image.png" />
 
     <!-- Google Analytics -->
-    {gaId && (
+    {import.meta.env.PROD && gaId && (
       <>
-        <script type="text/partytown" src={`https://www.googletagmanager.com/gtag/js?id=${gaId}`}></script>
-        <script type="text/partytown">
+        <script is:inline type="text/partytown" src={`https://www.googletagmanager.com/gtag/js?id=${gaId}`}></script>
+        <script is:inline type="text/partytown">
           window.dataLayer = window.dataLayer || [];
           function gtag(){dataLayer.push(arguments);}
           gtag('js', new Date());
-          gtag('config', '{gaId}');
+          gtag("consent", "default", {
+            ad_storage: "denied",
+            ad_user_data: "denied",
+            ad_personalization: "denied",
+            analytics_storage: "denied",
+          });
+          gtag('config', `${gaId}`);
         </script>
       </>
     )}
