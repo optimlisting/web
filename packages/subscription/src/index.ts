@@ -1,9 +1,9 @@
 import { prisma } from "@optim/db";
-import type { Plan } from "@optim/db";
 import { PLANS, type PlanKey } from "./config";
 
 export { PLANS };
 export type { PlanKey };
+export type Plan = "FREE" | "STARTER" | "PROFESSIONAL";
 
 export async function getSubscription(userId: string) {
   return prisma.subscription.findUnique({
