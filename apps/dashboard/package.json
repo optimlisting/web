@@ -7,12 +7,16 @@
     "dev": "next dev --port 3000",
     "build": "next build",
     "start": "next start",
+    "preview": "opennextjs-cloudflare build && opennextjs-cloudflare preview",
+    "deploy": "opennextjs-cloudflare build && opennextjs-cloudflare deploy",
+    "cf-typegen": "wrangler types --env-interface CloudflareEnv cloudflare-env.d.ts",
     "lint": "eslint --max-warnings 0",
     "check-types": "next typegen && tsc --noEmit"
   },
   "dependencies": {
     "@dodopayments/nextjs": "^0.3.6",
     "@hookform/resolvers": "^5.2.2",
+    "@opennextjs/cloudflare": "^1.19.9",
     "@optim/ai": "workspace:*",
     "@optim/auth": "workspace:*",
     "@optim/connections": "workspace:*",
@@ -39,6 +43,7 @@
     "@types/react-dom": "19.2.2",
     "eslint": "^9.39.1",
     "tailwindcss": "^4.2.4",
-    "typescript": "5.9.2"
+    "typescript": "5.9.2",
+    "wrangler": "^4.90.1"
   }
 }
