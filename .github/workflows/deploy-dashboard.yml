@@ -22,16 +22,16 @@ jobs:
           node-version: 22
           cache: 'pnpm'
 
-      - name: Install dependencies
-        run: pnpm install
+      - name: Install this shit
+        run: pnpm install --frozen-lockfile
 
       - name: Generate Prisma client
         run: cd packages/db && pnpm db:generate
         env:
           DATABASE_URL: ${{ secrets.DATABASE_URL }}
 
-      - name: Build for Cloudflare
-        run: cd apps/dashboard && pnpm build && pnpm cf-build
+      - name: Build
+        run: cd apps/dashboard && pnpm build
         env:
           DATABASE_URL: ${{ secrets.DATABASE_URL }}
           BETTER_AUTH_SECRET: ${{ secrets.BETTER_AUTH_SECRET }}
@@ -53,9 +53,12 @@ jobs:
           NEXT_PUBLIC_DODO_BUSINESS_ID: ${{ secrets.NEXT_PUBLIC_DODO_BUSINESS_ID }}
           NEXT_PUBLIC_DODO_STARTER_PRODUCT_ID: ${{ secrets.NEXT_PUBLIC_DODO_STARTER_PRODUCT_ID }}
           NEXT_PUBLIC_DODO_PRO_PRODUCT_ID: ${{ secrets.NEXT_PUBLIC_DODO_PRO_PRODUCT_ID }}
-          
-      - name: Deploy to Cloudflare
-        run: cd apps/dashboard && pnpm cf-deploy
-        env:
-          CLOUDFLARE_API_TOKEN: ${{ secrets.CLOUDFLARE_API_TOKEN }}
-          CLOUDFLARE_ACCOUNT_ID: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
+
+      - name: Deploy to Vercel
+        uses: amondnet/vercel-action@v42
+        with:
+          vercel-token: ${{ secrets.VERCEL_TOKEN }}
+          vercel-org-id: ${{ secrets.VERCEL_ORG_ID }}
+          vercel-project-id: ${{ secrets.VERCEL_PROJECT_ID }}
+          vercel-args: '--prod'
+          working-directory: apps/dashboard
