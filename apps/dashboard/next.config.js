@@ -2,9 +2,9 @@
 const nextConfig = {
   transpilePackages: ["@optim/ui"],
   basePath: "/dashboard",
-  outputFileTracingRoot: path.resolve(__dirname, "../../"),
+  outputFileTracingRoot: "../../",
   turbopack: {
-    root: path.resolve(__dirname, "../../"),
+    root: "../../",
   },
 };
 
