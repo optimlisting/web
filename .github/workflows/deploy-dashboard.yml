@@ -30,7 +30,7 @@ jobs:
         env:
           DATABASE_URL: ${{ secrets.DATABASE_URL }}
 
-      - name: Build
+      - name: Build Next.js
         run: cd apps/dashboard && pnpm build
         env:
           DATABASE_URL: ${{ secrets.DATABASE_URL }}
@@ -53,6 +53,12 @@ jobs:
           NEXT_PUBLIC_DODO_BUSINESS_ID: ${{ secrets.NEXT_PUBLIC_DODO_BUSINESS_ID }}
           NEXT_PUBLIC_DODO_STARTER_PRODUCT_ID: ${{ secrets.NEXT_PUBLIC_DODO_STARTER_PRODUCT_ID }}
           NEXT_PUBLIC_DODO_PRO_PRODUCT_ID: ${{ secrets.NEXT_PUBLIC_DODO_PRO_PRODUCT_ID }}
+      
+      - name: Run vercel build
+        run: npx vercel build --prod --cwd apps/dashboard --token=${{ secrets.VERCEL_TOKEN }}
+        env:
+          VERCEL_ORG_ID: ${{ secrets.VERCEL_ORG_ID }}
+          VERCEL_PROJECT_ID: ${{ secrets.VERCEL_PROJECT_ID }}
 
       - name: Deploy to Vercel
         uses: amondnet/vercel-action@v42
