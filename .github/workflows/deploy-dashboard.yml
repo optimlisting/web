@@ -53,6 +53,12 @@ jobs:
           NEXT_PUBLIC_DODO_BUSINESS_ID: ${{ secrets.NEXT_PUBLIC_DODO_BUSINESS_ID }}
           NEXT_PUBLIC_DODO_STARTER_PRODUCT_ID: ${{ secrets.NEXT_PUBLIC_DODO_STARTER_PRODUCT_ID }}
           NEXT_PUBLIC_DODO_PRO_PRODUCT_ID: ${{ secrets.NEXT_PUBLIC_DODO_PRO_PRODUCT_ID }}
+
+      - name: Pull Vercel Project Settings
+        run: cd apps/dashboard && npx vercel pull --yes --environment=production --token=${{ secrets.VERCEL_TOKEN }}
+        env:
+          VERCEL_ORG_ID: ${{ secrets.VERCEL_ORG_ID }}
+          VERCEL_PROJECT_ID: ${{ secrets.VERCEL_PROJECT_ID }}
       
       - name: Run vercel build
         run: npx vercel build --prod --cwd apps/dashboard --token=${{ secrets.VERCEL_TOKEN }}
