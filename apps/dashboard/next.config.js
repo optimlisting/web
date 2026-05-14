@@ -1,10 +1,15 @@
 /** @type {import('next').NextConfig} */
+import { dirname, resolve } from "node:path";
+import { fileURLToPath } from "node:url";
+
+const __dirname = dirname(fileURLToPath(import.meta.url));
+
 const nextConfig = {
   transpilePackages: ["@optim/ui"],
   basePath: "/dashboard",
-  outputFileTracingRoot: "../../",
+  outputFileTracingRoot: resolve(__dirname, "..", ".."),
   turbopack: {
-    root: "../../",
+    root: resolve(__dirname, "..", ".."),
   },
 };
 
