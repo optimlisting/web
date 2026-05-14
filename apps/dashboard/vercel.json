@@ -1,3 +1,0 @@
-{
-  "buildCommand": "cd ../.. && pnpm install --frozen-lockfile && cd apps/dashboard && cd ../../packages/db && pnpm db:generate && cd ../../apps/dashboard && pnpm build"
-}
