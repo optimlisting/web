@@ -1,0 +1,7 @@
+{
+  "buildCommand": "cd ../.. && pnpm install --frozen-lockfile && cd packages/db && pnpm db:generate && cd ../../apps/dashboard && pnpm build",
+  "outputDirectory": "apps/dashboard/.next",
+  "installCommand": "pnpm install --frozen-lockfile",
+  "framework": "nextjs",
+  "rootDirectory": "apps/dashboard"
+}

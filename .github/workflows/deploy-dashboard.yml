@@ -12,6 +12,8 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
+        with:
+          fetch-depth: 2
 
       - uses: pnpm/action-setup@v2
         with:
@@ -31,39 +33,19 @@ jobs:
           DATABASE_URL: ${{ secrets.DATABASE_URL }}
 
       - name: Pull Vercel Project Settings
-        run: npx vercel pull --yes --environment=production --token=${{ secrets.VERCEL_TOKEN }} --scope=${{ secrets.VERCEL_ORG_ID }}
+        run: npx vercel pull --yes --environment=production --token=${{ secrets.VERCEL_TOKEN }}
         env:
           VERCEL_ORG_ID: ${{ secrets.VERCEL_ORG_ID }}
           VERCEL_PROJECT_ID: ${{ secrets.VERCEL_PROJECT_ID }}
 
       - name: Build with Vercel
-        run: npx vercel build --prod --token=${{ secrets.VERCEL_TOKEN }} apps/dashboard
+        run: npx vercel build --prod --token=${{ secrets.VERCEL_TOKEN }}
         env:
           VERCEL_ORG_ID: ${{ secrets.VERCEL_ORG_ID }}
           VERCEL_PROJECT_ID: ${{ secrets.VERCEL_PROJECT_ID }}
-          DATABASE_URL: ${{ secrets.DATABASE_URL }}
-          BETTER_AUTH_SECRET: ${{ secrets.BETTER_AUTH_SECRET }}
-          BETTER_AUTH_URL: ${{ secrets.BETTER_AUTH_URL }}
-          AUTH_GOOGLE_ID: ${{ secrets.AUTH_GOOGLE_ID }}
-          AUTH_GOOGLE_SECRET: ${{ secrets.AUTH_GOOGLE_SECRET }}
-          AI_API_KEY: ${{ secrets.AI_API_KEY }}
-          AI_BASE_URL: ${{ secrets.AI_BASE_URL }}
-          AI_MODEL: ${{ secrets.AI_MODEL }}
-          DODO_PAYMENTS_API_KEY: ${{ secrets.DODO_PAYMENTS_API_KEY }}
-          DODO_PAYMENTS_WEBHOOK_SECRET: ${{ secrets.DODO_PAYMENTS_WEBHOOK_SECRET }}
-          DODO_PAYMENTS_ENVIRONMENT: ${{ secrets.DODO_PAYMENTS_ENVIRONMENT }}
-          DODO_PAYMENTS_RETURN_URL: ${{ secrets.DODO_PAYMENTS_RETURN_URL }}
-          RESEND_API_KEY: ${{ secrets.RESEND_API_KEY }}
-          ETSY_CLIENT_ID: ${{ secrets.ETSY_CLIENT_ID }}
-          ETSY_REDIRECT_URI: ${{ secrets.ETSY_REDIRECT_URI }}
-          ETSY_CODE_VERIFIER: ${{ secrets.ETSY_CODE_VERIFIER }}
-          NEXT_PUBLIC_AUTH_URL: ${{ secrets.NEXT_PUBLIC_AUTH_URL }}
-          NEXT_PUBLIC_DODO_BUSINESS_ID: ${{ secrets.NEXT_PUBLIC_DODO_BUSINESS_ID }}
-          NEXT_PUBLIC_DODO_STARTER_PRODUCT_ID: ${{ secrets.NEXT_PUBLIC_DODO_STARTER_PRODUCT_ID }}
-          NEXT_PUBLIC_DODO_PRO_PRODUCT_ID: ${{ secrets.NEXT_PUBLIC_DODO_PRO_PRODUCT_ID }}
 
       - name: Deploy to Vercel
-        run: npx vercel deploy --prebuilt --prod --token=${{ secrets.VERCEL_TOKEN }} apps/dashboard
+        run: npx vercel deploy --prebuilt --prod --token=${{ secrets.VERCEL_TOKEN }}
         env:
           VERCEL_ORG_ID: ${{ secrets.VERCEL_ORG_ID }}
           VERCEL_PROJECT_ID: ${{ secrets.VERCEL_PROJECT_ID }}
