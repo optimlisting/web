@@ -3,7 +3,6 @@ export interface PlanConfig {
   price: number;
   optimizationsPerMonth: number; // -1 = unlimited
   platforms: number; // -1 = all
-  allowedPlatforms: string[];
   features: readonly string[];
 }
 
@@ -13,7 +12,6 @@ export const PLANS = {
     price: 0,
     optimizationsPerMonth: 3,
     platforms: 1,
-    allowedPlatforms: [],
     features: [
       "3 listing optimizations",
       "1 platform (Etsy, eBay, or Amazon)",
@@ -25,28 +23,26 @@ export const PLANS = {
     price: 9,
     optimizationsPerMonth: 15,
     platforms: 1,
-    allowedPlatforms: ["etsy"],
     features: [
       "15 listing optimizations",
       "1 platform of choice",
       "Advanced AI optimization",
-      "Bulk processing",
-      "Connect your store",
+      "Bulk processing (soon)",
+      // "Connect your store",
     ],
   },
   PROFESSIONAL: {
     name: "Professional",
-    price: 29,
+    price: 16,
     optimizationsPerMonth: -1,
     platforms: -1,
-    allowedPlatforms: ["etsy", "ebay", "amazon"],
     features: [
       "Unlimited optimizations",
       "All platforms (Etsy, eBay, Amazon)",
       "Priority AI processing",
-      "CSV bulk import",
-      "Store integration",
-      "eBay & Amazon (coming soon)",
+      "CSV bulk import (soon)",
+      // "Store integration",
+      // "eBay & Amazon (coming soon)",
     ],
   },
 } as const satisfies Record<string, PlanConfig>;

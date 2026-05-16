@@ -46,15 +46,27 @@ export async function setSelectedPlatform(
   userId: string,
   platform: Platform
 ): Promise<void> {
-  await prisma.subscription.upsert({
+  const existing = await prisma.subscription.findUnique({
     where: { userId },
-    update: { selectedPlatform: platform },
-    create: {
-      userId,
-      plan: "FREE",
-      status: "ACTIVE",
-      selectedPlatform: platform,
-    },
+  });
+
+  if (!existing) {
+    // Create with defaults — shouldn't happen in normal flow
+    await prisma.subscription.create({
+      data: {
+        userId,
+        plan: "FREE",
+        status: "ACTIVE",
+        selectedPlatform: platform,
+      },
+    });
+    return;
+  }
+
+  // Update existing subscription — only change the platform
+  await prisma.subscription.update({
+    where: { userId },
+    data: { selectedPlatform: platform },
   });
 }
 

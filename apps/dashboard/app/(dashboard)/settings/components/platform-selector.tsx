@@ -14,8 +14,8 @@ interface PlatformSelectorProps {
 
 const PLATFORMS = [
   { id: "etsy", label: "Etsy", description: "Handmade, vintage, and craft supplies", available: true },
-  { id: "ebay", label: "eBay", description: "Auctions and fixed-price listings", available: false },
-  { id: "amazon", label: "Amazon", description: "Professional selling account", available: false },
+  { id: "ebay", label: "eBay", description: "Auctions and fixed-price listings", available: true },
+  { id: "amazon", label: "Amazon", description: "Professional selling account", available: true },
 ];
 
 export function PlatformSelector({ currentPlan, selectedPlatform }: PlatformSelectorProps) {
@@ -98,7 +98,7 @@ export function PlatformSelector({ currentPlan, selectedPlatform }: PlatformSele
             Your plan includes one platform. Select the marketplace you sell on.
             {current && (
               <span className="text-amber-600 font-medium block mt-1">
-                This choice is permanent. Contact support if you need to change it.
+                This choice is permanent. Contact <a href="mailto:support@optimListing.com" className="font-bold underline">support</a> if you need to change it.
               </span>
             )}
           </CardDescription>
