@@ -6,6 +6,7 @@ import { sendWelcomeEmail, sendPasswordResetEmail } from "@optim/email";
 import { headers } from "next/headers";
 
 export const auth = betterAuth({
+  basePath: "/dashboard/api/auth",
   baseURL: `${process.env.BETTER_AUTH_URL}/api/auth`,
   database: prismaAdapter(prisma, {
     provider: "postgresql",
@@ -27,6 +28,7 @@ export const auth = betterAuth({
     google: {
       clientId: process.env.AUTH_GOOGLE_ID!,
       clientSecret: process.env.AUTH_GOOGLE_SECRET!,
+      redirectURI: `${process.env.BETTER_AUTH_URL}/dashboard/api/auth/callback/google`
     },
   },
   databaseHooks: {
