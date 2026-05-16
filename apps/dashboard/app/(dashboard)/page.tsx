@@ -1,6 +1,6 @@
 import { Suspense } from "react";
 import { getSession } from "@optim/auth";
-import { authClient } from "@optim/auth/src/client";
+import { SignOutButton } from "./components/sign-out-button";
 import { redirect } from "next/navigation";
 import { getUsageLimit } from "@optim/subscription";
 import { getListingStats } from "@optim/db/listing-service";
@@ -94,16 +94,7 @@ export default async function DashboardPage() {
           <Avatar>
             <AvatarFallback>{initials}</AvatarFallback>
           </Avatar>
-          <form
-            action={async () => {
-              "use server";
-              await authClient.signOut();
-            }}
-          >
-            <Button variant="outline" type="submit">
-              Sign Out
-            </Button>
-          </form>
+          <SignOutButton />
         </div>
       </div>
 
@@ -126,7 +117,7 @@ export default async function DashboardPage() {
             <p className="text-gray-600 text-sm mb-4">
               Go to the Optimize page to improve your marketplace listings.
             </p>
-            <a href="/optimize">
+            <a href="/dashboard/optimize">
               <Button>Go to Optimize →</Button>
             </a>
           </div>
