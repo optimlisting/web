@@ -11,7 +11,7 @@ import { User, Mail, Sparkles, Check, CreditCard } from "lucide-react";
 import { PlatformSelector } from "./components/platform-selector";
 import { ManageBilling } from "./components/manage-billing";
 import { UpgradePlans } from "./components/upgrade-plans";
-import { EtsyConnect } from "./components/etsy-connect";
+// import { EtsyConnect } from "./components/etsy-connect";
 import { DangerZone } from "./components/danger-zone";
 
 interface SettingsClientProps {
@@ -111,9 +111,9 @@ export function SettingsClient({
       />
 
       {/* Plaform Integration */}
-      {(selectedPlatform === "etsy" || subscription.plan === "PROFESSIONAL") && (
+      {/* {(selectedPlatform === "etsy" || subscription.plan === "PROFESSIONAL") && (
         <EtsyConnect plan={subscription.plan} />
-      )}
+      )} */}
 
       {/* Subscription */}
       <Card>

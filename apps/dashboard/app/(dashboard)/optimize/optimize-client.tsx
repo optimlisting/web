@@ -70,7 +70,7 @@ export function OptimizeClient() {
     setError(null);
 
     try {
-      const response = await fetch("/api/optimize", {
+      const response = await fetch("/dashboard/api/optimize", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({
@@ -125,14 +125,18 @@ export function OptimizeClient() {
     async function check() {
       try {
         const [platformRes, usageRes] = await Promise.all([
-          fetch("/api/settings/platform"),
-          fetch("/api/usage"),  // We'll create this next
+          fetch("/dashboard/api/settings/platform"),
+          fetch("/dashboard/api/usage"),
         ]);
         const platformData = await platformRes.json();
         const usageData = await usageRes.json();
 
         setSelectedPlatform(platformData.platform);
         setIsPro(usageData.plan === "PROFESSIONAL");
+
+        if (platformData.platform) {
+          form.setValue("marketplace", platformData.platform);
+        }
       } catch {
         // Ignore
       }
@@ -220,7 +224,7 @@ export function OptimizeClient() {
                               disabled={!!selectedPlatform && !isPro && option.value !== selectedPlatform}
                             >
                               {option.label}
-                              {!!selectedPlatform && !isPro && option.value !== selectedPlatform ? " (locked)" : ""}
+                              {!!selectedPlatform && !isPro ? " (locked)" : ""}
                             </option>
                           ))}
                         </select>

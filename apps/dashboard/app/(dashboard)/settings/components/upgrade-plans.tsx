@@ -91,7 +91,7 @@ export function UpgradePlans({ currentPlan, user }: UpgradePlansProps) {
                 <li className="text-sm text-gray-600">15 optimizations/month</li>
                 <li className="text-sm text-gray-600">1 platform of choice</li>
                 <li className="text-sm text-gray-600">Advanced AI optimization</li>
-                <li className="text-sm text-gray-600">Bulk processing</li>
+                <li className="text-sm text-gray-600">Bulk processing (soon)</li>
               </ul>
               <Button
                 className="w-full"
@@ -129,9 +129,9 @@ export function UpgradePlans({ currentPlan, user }: UpgradePlansProps) {
               <li className="text-sm text-gray-600">Unlimited optimizations</li>
               <li className="text-sm text-gray-600">All platforms (Etsy, eBay, Amazon)</li>
               <li className="text-sm text-gray-600">Priority AI processing</li>
-              <li className="text-sm text-gray-600">CSV bulk import</li>
-              <li className="text-sm text-gray-600">Store integration</li>
-              <li className="text-sm text-gray-500">eBay & Amazon (coming soon)</li>
+              <li className="text-sm text-gray-600">CSV bulk import(soon)</li>
+              {/* <li className="text-sm text-gray-600">Store integration</li> */}
+              {/* <li className="text-sm text-gray-500">eBay & Amazon (coming soon)</li> */}
             </ul>
             <Button
               className="w-full"

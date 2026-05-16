@@ -2,6 +2,7 @@ import { NextResponse } from "next/server";
 import { getSession } from "@optim/auth";
 import { optimizeListing } from "@optim/ai";
 import { getUsageLimit, trackUsage } from "@optim/subscription";
+import { checkPlatformAccess } from "@optim/subscription/src/platform-guard";
 import { createListing } from "@optim/db/listing-service";
 import type { ListingInput } from "@optim/ai";
 
@@ -35,6 +36,15 @@ export async function POST(request: Request) {
   try {
     const body = await request.json();
     const { title, description, tags, marketplace } = body;
+
+    const platformCheck = await checkPlatformAccess(userId, marketplace);
+  
+    if (!platformCheck.allowed) {
+      return NextResponse.json(
+        { error: platformCheck.error },
+        { status: 403 }
+      );
+    }
 
     if (!title || !description || !marketplace) {
       return NextResponse.json(

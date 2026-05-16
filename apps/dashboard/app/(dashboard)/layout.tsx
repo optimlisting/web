@@ -7,8 +7,6 @@ import {
   List,
   Settings,
   Sparkles,
-  BarChart3,
-  PenLine
 } from "lucide-react";
 
 const navItems = [
@@ -20,23 +18,9 @@ const navItems = [
   },
   {
     title: "Optimize",
-    href: "/optimize/manual",
+    href: "/optimize",
     icon: Sparkles,
-    children: [
-      {
-        title: "Manual",
-        href: "/optimize/manual",
-        icon: PenLine,
-        description: "Paste & optimize one listing",
-      },
-      {
-        title: "Audit",
-        href: "/optimize/audit",
-        icon: BarChart3,
-        description: "Scan your entire store",
-        requiresPaidPlan: true,
-      },
-    ]
+    children: undefined
   },
   {
     title: "Listings",
@@ -89,40 +73,40 @@ export default async function DashboardLayout({
           {/* Navigation */}
           <nav className="flex-1 px-4 py-6 space-y-1">
             {navItems.map((item) => {
-              if (item.children) {
-                return (
-                  <div key={item.href} className="space-y-1">
-                    <div className="flex items-center gap-3 px-3 py-2 text-sm font-medium text-gray-500">
-                      <item.icon className="w-5 h-5 text-gray-400" />
-                      {item.title}
-                    </div>
-                    <div className="ml-6 space-y-1">
-                      {item.children.map((child) => {
-                        const isPaidFeature = child.requiresPaidPlan;
-                        return (
-                          <Link
-                            key={child.href}
-                            href={child.href}
-                            className={`flex items-center gap-2 px-3 py-2 text-sm rounded-lg transition ${
-                              isPaidFeature && !isPaid
-                                ? "text-gray-400 hover:text-gray-600"
-                                : "text-gray-700 hover:bg-gray-100 hover:text-gray-900"
-                            }`}
-                          >
-                            <child.icon className={`w-4 h-4 ${isPaidFeature ? "text-gray-300" : "text-gray-400"}`} />
-                            <span>{child.title}</span>
-                            {isPaidFeature && !isPaid && (
-                              <span className="text-xs bg-gray-100 text-gray-500 px-1.5 py-0.5 rounded ml-auto">
-                                upgrade
-                              </span>
-                            )}
-                          </Link>
-                        );
-                      })}
-                    </div>
-                  </div>
-                );
-              }
+              // if (item.children) {
+              //   return (
+              //     <div key={item.href} className="space-y-1">
+              //       <div className="flex items-center gap-3 px-3 py-2 text-sm font-medium text-gray-500">
+              //         <item.icon className="w-5 h-5 text-gray-400" />
+              //         {item.title}
+              //       </div>
+              //       <div className="ml-6 space-y-1">
+              //         {item.children?.map((child:any) => {
+              //           const isPaidFeature = child.requiresPaidPlan;
+              //           return (
+              //             <Link
+              //               key={child.href}
+              //               href={child.href}
+              //               className={`flex items-center gap-2 px-3 py-2 text-sm rounded-lg transition ${
+              //                 isPaidFeature && !isPaid
+              //                   ? "text-gray-400 hover:text-gray-600"
+              //                   : "text-gray-700 hover:bg-gray-100 hover:text-gray-900"
+              //               }`}
+              //             >
+              //               <child.icon className={`w-4 h-4 ${isPaidFeature ? "text-gray-300" : "text-gray-400"}`} />
+              //               <span>{child.title}</span>
+              //               {isPaidFeature && !isPaid && (
+              //                 <span className="text-xs bg-gray-100 text-gray-500 px-1.5 py-0.5 rounded ml-auto">
+              //                   upgrade
+              //                 </span>
+              //               )}
+              //             </Link>
+              //           );
+              //         })}
+              //       </div>
+              //     </div>
+              //   );
+              // }
 
               return (
                 <Link
@@ -139,9 +123,9 @@ export default async function DashboardLayout({
 
           {/* Footer */}
           <div className="p-4 border-t border-gray-200 space-y-3">
-            <p className="text-[0.65rem] text-gray-400 leading-relaxed">
+            {/* <p className="text-[0.65rem] text-gray-400 leading-relaxed">
               The term "Etsy" is a trademark of Etsy, Inc. This application uses the Etsy API but is not endorsed or certified by Etsy, Inc.
-            </p>
+            </p> */}
             <p className="text-xs text-gray-500">© 2026 OptimListing</p>
           </div>
         </div>

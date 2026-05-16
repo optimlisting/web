@@ -4,7 +4,7 @@ import { useState } from "react";
 import { toast } from "sonner";
 import { Button } from "@optim/ui/components/button";
 import { Input } from "@optim/ui/components/input";
-import { Card, CardContent, CardHeader, CardTitle } from "@optim/ui/components/card";
+import { Card, CardContent } from "@optim/ui/components/card";
 import { Badge } from "@optim/ui/components/badge";
 import {
   Table,
@@ -28,7 +28,6 @@ import {
   Trash2,
   Eye,
   Star,
-  // ArrowUpDown,
   Copy,
   Check,
   Sparkles,
@@ -72,7 +71,7 @@ export function ListingsClient({
   const [marketplace, setMarketplace] = useState<string>("all");
   const [selectedListing, setSelectedListing] = useState<Listing | null>(null);
   const [copied, setCopied] = useState<string | null>(null);
-  const [loading, setLoading] = useState(false);
+  // const [loading, setLoading] = useState(false);
   const [deletingId, setDeletingId] = useState<string | null>(null);
 
   const filteredListings = listings.filter((l) => {
@@ -93,7 +92,7 @@ export function ListingsClient({
   const handleDelete = async (id: string) => {
     setDeletingId(id);
     try {
-      const response = await fetch(`/api/listings?id=${id}`, { method: "DELETE" });
+      const response = await fetch(`/dashboard/api/listings?id=${id}`, { method: "DELETE" });
       
       if (!response.ok) throw new Error("Failed to delete");
       
@@ -287,7 +286,7 @@ export function ListingsClient({
               <p className="text-sm text-gray-500 mt-1">
                 Go to the Optimize page to create your first listing.
               </p>
-              <a href="/optimize">
+              <a href="/dashboard/optimize">
                 <Button className="mt-4" size="sm">
                   Start Optimizing
                 </Button>
