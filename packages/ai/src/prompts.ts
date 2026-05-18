@@ -20,7 +20,14 @@ export function buildOptimizationPrompt(input: ListingInput): string {
 - Titles up to 200 characters (varies by category)
 - Format: Brand + Model + Key Feature + Product Type
 - Bullet points should highlight key benefits and features
-- Backend search terms: use single words, no repeats`
+- Backend search terms: use single words, no repeats`,
+
+    shopify: `Shopify SEO Guidelines:
+- Titles up to 70 characters, include brand + key feature
+- Meta descriptions should be 150-160 characters, include call to action
+- Product descriptions should be detailed with keywords naturally placed
+- Use alt text on images with descriptive keywords
+- Tags help with site search and collections`
   };
 
   return `You are an expert marketplace listing optimizer for ${marketplace.toUpperCase()}. 

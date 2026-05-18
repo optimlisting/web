@@ -1,4 +1,4 @@
-export type Marketplace = "etsy" | "ebay" | "amazon";
+export type Marketplace = "etsy" | "ebay" | "amazon" | "shopify";
 
 export interface ListingInput {
   title: string;
