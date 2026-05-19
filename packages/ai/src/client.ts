@@ -5,7 +5,8 @@ import { buildOptimizationPrompt, buildQuickScorePrompt } from "./prompts";
 // Initialize with DeepSeek (cheaper) or OpenAI
 const client = new OpenAI({
   apiKey: process.env.AI_API_KEY || process.env.DEEPSEEK_API_KEY || "",
-  baseURL: process.env.AI_BASE_URL || "https://api.deepseek.com/v1",
+  baseURL: process.env.AI_BASE_URL || "https://api.deepseek.com",
+  defaultQuery: undefined
 });
 
 const MODEL = process.env.AI_MODEL || "deepseek-chat";
