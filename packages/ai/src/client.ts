@@ -31,6 +31,9 @@ export async function optimizeListing(input: ListingInput): Promise<Optimization
     });
 
     const content = response.choices[0]?.message?.content;
+
+    console.log("[AI] Raw response content:", content?.substring(0, 500)); // debug
+
     if (!content) {
       return { success: false, error: "No response from AI" };
     }
@@ -42,6 +45,7 @@ export async function optimizeListing(input: ListingInput): Promise<Optimization
     }
 
     const parsed = JSON.parse(jsonMatch[0]);
+    console.log("[AI] Parsed successfully:", JSON.stringify(parsed).substring(0, 200)); // debug
 
     return {
       success: true,
@@ -55,6 +59,7 @@ export async function optimizeListing(input: ListingInput): Promise<Optimization
       tokensUsed: response.usage?.total_tokens || 0,
     };
   } catch (error) {
+    console.error("[AI] Exception:", error); // debug
     return {
       success: false,
       error: error instanceof Error ? error.message : "AI optimization failed",

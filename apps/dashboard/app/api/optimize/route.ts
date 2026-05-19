@@ -15,26 +15,9 @@ export async function POST(request: Request) {
 
   const userId = session.user.id!;
 
-  // Check usage limits
-  const usage = await getUsageLimit(userId);
-
-  if (!usage.isUnlimited && usage.used >= usage.limit) {
-    return NextResponse.json(
-      {
-        error: "Usage limit reached",
-        usage: {
-          used: usage.used,
-          limit: usage.limit,
-          plan: usage.plan,
-        },
-        upgradeUrl: "/pricing",
-      },
-      { status: 429 }
-    );
-  }
-
   try {
     const body = await request.json();
+    console.log("[Optimize API] Request body:", JSON.stringify(body).substring(0, 300)); // debug
     const { title, description, tags, marketplace } = body;
 
     const platformCheck = await checkPlatformAccess(userId, marketplace);
@@ -53,6 +36,24 @@ export async function POST(request: Request) {
       );
     }
 
+    // Check usage limits
+    const usage = await getUsageLimit(userId);
+
+    if (!usage.isUnlimited && usage.used >= usage.limit) {
+      return NextResponse.json(
+        {
+          error: "Usage limit reached",
+          usage: {
+            used: usage.used,
+            limit: usage.limit,
+            plan: usage.plan,
+          },
+          upgradeUrl: "/pricing",
+        },
+        { status: 429 }
+      );
+    }
+
     const input: ListingInput = {
       title,
       description,
@@ -60,7 +61,9 @@ export async function POST(request: Request) {
       marketplace,
     };
 
+    console.log("[Optimize API] Calling AI with marketplace:", marketplace); // debug
     const result = await optimizeListing(input);
+    console.log("[Optimize API] AI result:", JSON.stringify(result).substring(0, 300)); // debug
 
     if (!result.success) {
       return NextResponse.json(
@@ -102,7 +105,7 @@ export async function POST(request: Request) {
       },
     });
   } catch (error) {
-    console.error("Optimization error:", error);
+    console.error("[Optimize API] Unhandled error:", error);
     return NextResponse.json(
       { error: "Failed to optimize listing" },
       { status: 500 }
