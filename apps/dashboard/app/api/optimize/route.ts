@@ -17,7 +17,6 @@ export async function POST(request: Request) {
 
   try {
     const body = await request.json();
-    console.log("[Optimize API] Request body:", JSON.stringify(body).substring(0, 300)); // debug
     const { title, description, tags, marketplace } = body;
 
     const platformCheck = await checkPlatformAccess(userId, marketplace);
@@ -61,9 +60,7 @@ export async function POST(request: Request) {
       marketplace,
     };
 
-    console.log("[Optimize API] Calling AI with marketplace:", marketplace); // debug
     const result = await optimizeListing(input);
-    console.log("[Optimize API] AI result:", JSON.stringify(result).substring(0, 300)); // debug
 
     if (!result.success) {
       return NextResponse.json(
