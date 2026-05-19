@@ -307,11 +307,11 @@ export function ListingsClient({
               <DialogHeader>
                 <DialogTitle>Listing Details</DialogTitle>
               </DialogHeader>
-              <Tabs defaultValue="optimized" orientation="vertical" className="mt-4">
+              <Tabs defaultValue="optimized" orientation="vertical" className="flex-col mt-4">
                 <TabsList>
-                  <TabsTrigger value="optimized">Optimized</TabsTrigger>
-                  <TabsTrigger value="original">Original</TabsTrigger>
-                  <TabsTrigger value="improvements">Improvements</TabsTrigger>
+                  <TabsTrigger className="data-[state=active]:bg-white" value="optimized">Optimized</TabsTrigger>
+                  <TabsTrigger className="data-[state=active]:bg-white" value="original">Original</TabsTrigger>
+                  <TabsTrigger className="data-[state=active]:bg-white" value="improvements">Improvements</TabsTrigger>
                 </TabsList>
 
                 <TabsContent value="optimized" className="space-y-4 mt-4">
