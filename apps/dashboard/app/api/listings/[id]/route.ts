@@ -1,6 +1,6 @@
 import { NextResponse } from "next/server";
 import { getSession } from "@optim/auth";
-import { getListingById } from "@optim/db/listing-service";
+import { getListingById } from "@optimlisting/db/listing-service";
 
 export async function GET(
   request: Request,

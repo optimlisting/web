@@ -1,6 +1,6 @@
 import { NextResponse } from "next/server";
 import { getSession } from "@optim/auth";
-import { prisma } from "@optim/db";
+import { prisma } from "@optimlisting/db";
 
 export async function POST() {
   const session = await getSession();

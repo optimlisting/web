@@ -1,10 +1,9 @@
 import { NextResponse } from "next/server";
 import { getSession } from "@optim/auth";
-import { optimizeListing } from "@optim/ai";
+import { optimizeListing, ListingInput } from "@optimlisting/ai";
 import { getUsageLimit, trackUsage } from "@optim/subscription";
 import { checkPlatformAccess } from "@optim/subscription/src/platform-guard";
-import { createListing } from "@optim/db/listing-service";
-import type { ListingInput } from "@optim/ai";
+import { createListing } from "@optimlisting/db/listing-service";
 
 export async function POST(request: Request) {
   const session = await getSession();

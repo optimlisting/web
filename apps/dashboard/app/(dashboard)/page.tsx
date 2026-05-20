@@ -3,7 +3,7 @@ import { getSession } from "@optim/auth";
 import { SignOutButton } from "./components/sign-out-button";
 import { redirect } from "next/navigation";
 import { getUsageLimit } from "@optim/subscription";
-import { getListingStats } from "@optim/db/listing-service";
+import { getListingStats } from "@optimListing/db/listing-service";
 import { Button } from "@optim/ui/components/button";
 import { Card, CardContent, CardHeader, CardTitle } from "@optim/ui/components/card";
 import { Avatar, AvatarFallback } from "@optim/ui/components/avatar";

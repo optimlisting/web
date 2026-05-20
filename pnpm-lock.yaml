@@ -32,18 +32,12 @@ importers:
       '@hookform/resolvers':
         specifier: ^5.2.2
         version: 5.2.2(react-hook-form@7.75.0(react@19.2.5))
-      '@optim/ai':
-        specifier: workspace:*
-        version: link:../../packages/ai
       '@optim/auth':
         specifier: workspace:*
         version: link:../../packages/auth
       '@optim/connections':
         specifier: workspace:*
         version: link:../../packages/connections
-      '@optim/db':
-        specifier: workspace:*
-        version: link:../../packages/db
       '@optim/email':
         specifier: workspace:*
         version: link:../../packages/email
@@ -53,6 +47,12 @@ importers:
       '@optim/ui':
         specifier: workspace:*
         version: link:../../packages/ui
+      '@optimlisting/ai':
+        specifier: workspace:*
+        version: link:../../packages/ai
+      '@optimlisting/db':
+        specifier: workspace:*
+        version: link:../../packages/db
       bcryptjs:
         specifier: ^3.0.3
         version: 3.0.3
@@ -119,10 +119,10 @@ importers:
         version: 2.1.7
       '@tailwindcss/vite':
         specifier: ^4.2.4
-        version: 4.2.4(vite@7.3.2(@types/node@22.19.17)(jiti@2.6.1)(lightningcss@1.32.0)(terser@5.16.9)(tsx@4.21.0)(yaml@2.9.0))
+        version: 4.2.4(vite@7.3.2(@types/node@25.6.0)(jiti@2.6.1)(lightningcss@1.32.0)(terser@5.16.9)(tsx@4.21.0)(yaml@2.9.0))
       astro:
         specifier: ^6.1.10
-        version: 6.2.2(@types/node@22.19.17)(@vercel/blob@2.3.0)(aws4fetch@1.0.20)(jiti@2.6.1)(lightningcss@1.32.0)(rollup@4.60.3)(terser@5.16.9)(tsx@4.21.0)(yaml@2.9.0)
+        version: 6.2.2(@types/node@25.6.0)(@vercel/blob@2.3.0)(aws4fetch@1.0.20)(jiti@2.6.1)(lightningcss@1.32.0)(rollup@4.60.3)(terser@5.16.9)(tsx@4.21.0)(yaml@2.9.0)
       tailwindcss:
         specifier: ^4.2.4
         version: 4.2.4
@@ -152,12 +152,12 @@ importers:
       '@better-auth/prisma-adapter':
         specifier: ^1.6.9
         version: 1.6.9(@better-auth/core@1.6.9(@better-auth/utils@0.4.0)(@better-fetch/fetch@1.1.21)(better-call@1.3.5(zod@4.4.3))(jose@6.2.3)(kysely@0.28.17)(nanostores@1.3.0))(@better-auth/utils@0.4.0)(@prisma/client@7.8.0(prisma@7.8.0(@types/react-dom@19.2.2(@types/react@19.2.2))(@types/react@19.2.2)(magicast@0.5.2)(react-dom@19.2.5(react@19.2.5))(react@19.2.5)(typescript@6.0.3))(typescript@6.0.3))(prisma@7.8.0(@types/react-dom@19.2.2(@types/react@19.2.2))(@types/react@19.2.2)(magicast@0.5.2)(react-dom@19.2.5(react@19.2.5))(react@19.2.5)(typescript@6.0.3))
-      '@optim/db':
-        specifier: workspace:*
-        version: link:../db
       '@optim/email':
         specifier: workspace:*
         version: link:../email
+      '@optimlisting/db':
+        specifier: workspace:*
+        version: link:../db
       bcryptjs:
         specifier: ^3.0.3
         version: 3.0.3
@@ -180,7 +180,7 @@ importers:
 
   packages/connections:
     dependencies:
-      '@optim/db':
+      '@optimlisting/db':
         specifier: workspace:*
         version: link:../db
     devDependencies:
@@ -273,7 +273,7 @@ importers:
 
   packages/subscription:
     dependencies:
-      '@optim/db':
+      '@optimlisting/db':
         specifier: workspace:*
         version: link:../db
       '@prisma/client':
@@ -9657,12 +9657,12 @@ snapshots:
       postcss-selector-parser: 6.0.10
       tailwindcss: 4.2.4
 
-  '@tailwindcss/vite@4.2.4(vite@7.3.2(@types/node@22.19.17)(jiti@2.6.1)(lightningcss@1.32.0)(terser@5.16.9)(tsx@4.21.0)(yaml@2.9.0))':
+  '@tailwindcss/vite@4.2.4(vite@7.3.2(@types/node@25.6.0)(jiti@2.6.1)(lightningcss@1.32.0)(terser@5.16.9)(tsx@4.21.0)(yaml@2.9.0))':
     dependencies:
       '@tailwindcss/node': 4.2.4
       '@tailwindcss/oxide': 4.2.4
       tailwindcss: 4.2.4
-      vite: 7.3.2(@types/node@22.19.17)(jiti@2.6.1)(lightningcss@1.32.0)(terser@5.16.9)(tsx@4.21.0)(yaml@2.9.0)
+      vite: 7.3.2(@types/node@25.6.0)(jiti@2.6.1)(lightningcss@1.32.0)(terser@5.16.9)(tsx@4.21.0)(yaml@2.9.0)
 
   '@tootallnate/once@2.0.0': {}
 
@@ -10332,7 +10332,7 @@ snapshots:
     dependencies:
       tslib: 2.8.1
 
-  astro@6.2.2(@types/node@22.19.17)(@vercel/blob@2.3.0)(aws4fetch@1.0.20)(jiti@2.6.1)(lightningcss@1.32.0)(rollup@4.60.3)(terser@5.16.9)(tsx@4.21.0)(yaml@2.9.0):
+  astro@6.2.2(@types/node@25.6.0)(@vercel/blob@2.3.0)(aws4fetch@1.0.20)(jiti@2.6.1)(lightningcss@1.32.0)(rollup@4.60.3)(terser@5.16.9)(tsx@4.21.0)(yaml@2.9.0):
     dependencies:
       '@astrojs/compiler': 4.0.0
       '@astrojs/internal-helpers': 0.9.0
@@ -10384,8 +10384,8 @@ snapshots:
       unist-util-visit: 5.1.0
       unstorage: 1.17.5(@vercel/blob@2.3.0)(aws4fetch@1.0.20)
       vfile: 6.0.3
-      vite: 7.3.2(@types/node@22.19.17)(jiti@2.6.1)(lightningcss@1.32.0)(terser@5.16.9)(tsx@4.21.0)(yaml@2.9.0)
-      vitefu: 1.1.3(vite@7.3.2(@types/node@22.19.17)(jiti@2.6.1)(lightningcss@1.32.0)(terser@5.16.9)(tsx@4.21.0)(yaml@2.9.0))
+      vite: 7.3.2(@types/node@25.6.0)(jiti@2.6.1)(lightningcss@1.32.0)(terser@5.16.9)(tsx@4.21.0)(yaml@2.9.0)
+      vitefu: 1.1.3(vite@7.3.2(@types/node@25.6.0)(jiti@2.6.1)(lightningcss@1.32.0)(terser@5.16.9)(tsx@4.21.0)(yaml@2.9.0))
       xxhash-wasm: 1.1.0
       yargs-parser: 22.0.0
       zod: 4.4.3
@@ -14719,7 +14719,7 @@ snapshots:
       '@types/unist': 3.0.3
       vfile-message: 4.0.3
 
-  vite@7.3.2(@types/node@22.19.17)(jiti@2.6.1)(lightningcss@1.32.0)(terser@5.16.9)(tsx@4.21.0)(yaml@2.9.0):
+  vite@7.3.2(@types/node@25.6.0)(jiti@2.6.1)(lightningcss@1.32.0)(terser@5.16.9)(tsx@4.21.0)(yaml@2.9.0):
     dependencies:
       esbuild: 0.27.7
       fdir: 6.5.0(picomatch@4.0.4)
@@ -14728,7 +14728,7 @@ snapshots:
       rollup: 4.60.3
       tinyglobby: 0.2.16
     optionalDependencies:
-      '@types/node': 22.19.17
+      '@types/node': 25.6.0
       fsevents: 2.3.3
       jiti: 2.6.1
       lightningcss: 1.32.0
@@ -14736,9 +14736,9 @@ snapshots:
       tsx: 4.21.0
       yaml: 2.9.0
 
-  vitefu@1.1.3(vite@7.3.2(@types/node@22.19.17)(jiti@2.6.1)(lightningcss@1.32.0)(terser@5.16.9)(tsx@4.21.0)(yaml@2.9.0)):
+  vitefu@1.1.3(vite@7.3.2(@types/node@25.6.0)(jiti@2.6.1)(lightningcss@1.32.0)(terser@5.16.9)(tsx@4.21.0)(yaml@2.9.0)):
     optionalDependencies:
-      vite: 7.3.2(@types/node@22.19.17)(jiti@2.6.1)(lightningcss@1.32.0)(terser@5.16.9)(tsx@4.21.0)(yaml@2.9.0)
+      vite: 7.3.2(@types/node@25.6.0)(jiti@2.6.1)(lightningcss@1.32.0)(terser@5.16.9)(tsx@4.21.0)(yaml@2.9.0)
 
   wcwidth@1.0.1:
     dependencies:
