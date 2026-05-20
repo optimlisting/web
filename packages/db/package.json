@@ -1,9 +1,12 @@
 {
-  "name": "@optim/db",
-  "version": "0.1.0",
-  "private": true,
+  "name": "@optimlisting/db",
+  "version": "1.0.0",
+  "private": false,
   "main": "./src/index.ts",
   "types": "./src/index.ts",
+  "publishConfig": {
+    "access": "public"
+  },
   "scripts": {
     "db:push": "prisma db push",
     "db:generate": "prisma generate",

@@ -1,5 +1,5 @@
 // Platform exports
-export * from "./etsy";
+// export * from "./etsy";
 
 // Future:
 // export * from "./ebay";

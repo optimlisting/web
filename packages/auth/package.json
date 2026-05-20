@@ -15,8 +15,8 @@
   "license": "ISC",
   "dependencies": {
     "@better-auth/prisma-adapter": "^1.6.9",
-    "@optim/db": "workspace:*",
     "@optim/email": "workspace:*",
+    "@optimlisting/db": "workspace:*",
     "bcryptjs": "^3.0.3",
     "better-auth": "^1.6.9",
     "next": "16.2.0",

@@ -1,7 +1,7 @@
 import { betterAuth } from "better-auth";
 import { prismaAdapter } from "better-auth/adapters/prisma";
 import { nextCookies } from "better-auth/next-js";
-import { prisma } from "@optim/db";
+import { prisma } from "@optimlisting/db";
 import { sendWelcomeEmail, sendPasswordResetEmail } from "@optim/email";
 import { headers } from "next/headers";
 
