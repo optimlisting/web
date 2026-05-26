@@ -1,4 +1,4 @@
-import { prisma } from "@optimlisting/db";
+import { prisma } from "@optim/db";
 import { getUsageLimit } from "./index";
 import { PLANS, ALL_PLATFORMS, type PlanKey, type Platform } from "./config";
 
