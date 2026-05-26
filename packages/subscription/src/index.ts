@@ -1,4 +1,4 @@
-import { prisma } from "@optimlisting/db";
+import { prisma } from "@optim/db";
 import { PLANS, type PlanKey } from "./config";
 
 export { PLANS };

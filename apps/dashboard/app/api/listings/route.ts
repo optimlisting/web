@@ -1,6 +1,6 @@
 import { NextResponse } from "next/server";
 import { getSession } from "@optim/auth";
-import { getListingsByUser, deleteListing } from "@optimlisting/db/listing-service";
+import { getListingsByUser, deleteListing } from "@optim/db/listing-service";
 
 export async function GET(request: Request) {
   const session = await getSession();

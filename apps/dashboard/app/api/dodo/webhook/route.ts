@@ -1,5 +1,5 @@
 import { Webhooks } from "@dodopayments/nextjs";
-import { prisma } from "@optimlisting/db";
+import { prisma } from "@optim/db";
 
 export const POST = Webhooks({
   webhookKey: process.env.DODO_PAYMENTS_WEBHOOK_SECRET!,

@@ -4,7 +4,6 @@ import { useState } from "react";
 import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { z } from "zod";
-import { toast } from "sonner";
 import Link from "next/link";
 import { authClient } from "@optim/auth/src/client";
 import { Button } from "@optim/ui/components/button";

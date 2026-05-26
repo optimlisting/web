@@ -3,7 +3,7 @@ import { getSession } from "@optim/auth";
 import { optimizeListing, ListingInput } from "@optimlisting/ai";
 import { getUsageLimit, trackUsage } from "@optim/subscription";
 import { checkPlatformAccess } from "@optim/subscription/src/platform-guard";
-import { createListing } from "@optimlisting/db/listing-service";
+import { createListing } from "@optim/db/listing-service";
 
 export async function POST(request: Request) {
   const session = await getSession();

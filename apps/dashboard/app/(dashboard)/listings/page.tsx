@@ -1,6 +1,6 @@
 import { getSession } from "@optim/auth";
 import { redirect } from "next/navigation";
-import { getListingsByUser, getListingStats } from "@optimListing/db/listing-service";
+import { getListingsByUser, getListingStats } from "@optim/db/listing-service";
 import { ListingsClient } from "./listings-client";
 
 // Serialize dates for client components

@@ -16,7 +16,7 @@
   "dependencies": {
     "@better-auth/prisma-adapter": "^1.6.9",
     "@optim/email": "workspace:*",
-    "@optimlisting/db": "workspace:*",
+    "@optim/db": "workspace:*",
     "bcryptjs": "^3.0.3",
     "better-auth": "^1.6.9",
     "next": "16.2.0",
