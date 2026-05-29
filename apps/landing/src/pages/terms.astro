@@ -6,6 +6,27 @@ import Layout from '../layouts/Layout.astro';
   title="Terms of Service"
   description="OptimListing Terms of Service"
 >
+  <!-- Navigation -->
+  <nav class="border-b border-gray-100">
+    <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="flex justify-between items-center h-16">
+        <a href="/" class="flex items-center gap-1.5">
+          <img src="/optim-logo.svg" alt="OptimListing" class="h-6" />
+          <span class="text-xl font-bold text-brand-600">OptimListing</span>
+        </a>
+        <div class="hidden sm:flex items-center gap-6">
+          <a href="/#features" class="text-sm text-gray-600 hover:text-gray-900 transition">Features</a>
+          <a href="/#pricing" class="text-sm text-gray-600 hover:text-gray-900 transition">Pricing</a>
+          <a href="/#faq" class="text-sm text-gray-600 hover:text-gray-900 transition">FAQ</a>
+          <a href="/dashboard/sign-in" class="text-sm font-medium text-brand-600 hover:text-brand-700 transition">Sign In</a>
+          <a href="/dashboard/signup" class="text-sm font-medium bg-brand-600 text-white px-4 py-2 rounded-lg hover:bg-brand-700 transition">
+            Start Free
+          </a>
+        </div>
+      </div>
+    </div>
+  </nav>
+
   <div class="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
     <h1 class="text-3xl font-bold text-gray-900 mb-8">Terms of Service</h1>
     <p class="text-sm text-gray-500 mb-8">Last updated: May 2026</p>
@@ -18,7 +39,7 @@ import Layout from '../layouts/Layout.astro';
 
       <h2>2. Description of Service</h2>
       <p>
-        OptimListing provides AI-powered marketplace listing optimization for Etsy, and in the future, eBay and Amazon. The Service includes manual listing optimization, automated store audits, and bulk optimization features.
+        OptimListing provides AI-powered marketplace listing optimization for SHopify, Etsy, eBay and Amazon. The Service includes manual listing optimization, and (in the future) bulk optimization features.
       </p>
 
       <h2>3. Account Registration</h2>
@@ -31,17 +52,12 @@ import Layout from '../layouts/Layout.astro';
         OptimListing offers Free, Starter ($9/month), and Professional ($16/month) plans. Paid subscriptions are billed monthly through Dodo Payments. You may cancel your subscription at any time. No refunds are provided for partial months. Upon cancellation, you retain access until the end of your current billing period.
       </p>
 
-      <h2>5. Etsy Integration</h2>
-      <p>
-        By connecting your Etsy shop, you authorize OptimListing to access your listing data through Etsy's official API. We request read-only access. You may revoke this authorization at any time. OptimListing is not affiliated with or endorsed by Etsy, Inc.
-      </p>
-
-      <h2>6. AI-Generated Content</h2>
+      <h2>5. AI-Generated Content</h2>
       <p>
         Our AI provides optimization suggestions based on marketplace SEO best practices. While we strive for accuracy, we do not guarantee that optimized listings will result in increased sales, views, or rankings. You are responsible for reviewing and approving all AI-generated content before publishing to your marketplace.
       </p>
 
-      <h2>7. Acceptable Use</h2>
+      <h2>6. Acceptable Use</h2>
       <p>You agree not to:</p>
       <ul>
         <li>Use the Service for any illegal purpose or in violation of marketplace terms of service.</li>
@@ -50,22 +66,22 @@ import Layout from '../layouts/Layout.astro';
         <li>Upload malicious content or attempt to disrupt the Service.</li>
       </ul>
 
-      <h2>8. Limitation of Liability</h2>
+      <h2>7. Limitation of Liability</h2>
       <p>
         The Service is provided "as is" without warranties of any kind. OptimListing shall not be liable for any indirect, incidental, or consequential damages arising from the use of the Service, including but not limited to lost sales or marketplace penalties.
       </p>
 
-      <h2>9. Termination</h2>
+      <h2>8. Termination</h2>
       <p>
         We reserve the right to suspend or terminate accounts that violate these Terms. You may delete your account at any time through the Settings page. Upon deletion, all your data is permanently removed.
       </p>
 
-      <h2>10. Changes to Terms</h2>
+      <h2>9. Changes to Terms</h2>
       <p>
         We may update these Terms from time to time. Continued use of the Service after changes constitutes acceptance of the new Terms. We will notify active users of material changes via email.
       </p>
 
-      <h2>11. Contact</h2>
+      <h2>10. Contact</h2>
       <p>
         For questions about these Terms, contact us at
         <a href="mailto:support@optimlisting.com" class="text-brand-600 hover:underline">support@optimlisting.com</a>.

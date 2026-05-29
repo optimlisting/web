@@ -6,6 +6,27 @@ import Layout from '../layouts/Layout.astro';
   title="Privacy Policy"
   description="OptimListing Privacy Policy"
 >
+  <!-- Navigation -->
+  <nav class="border-b border-gray-100">
+    <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="flex justify-between items-center h-16">
+        <a href="/" class="flex items-center gap-1.5">
+          <img src="/optim-logo.svg" alt="OptimListing" class="h-6" />
+          <span class="text-xl font-bold text-brand-600">OptimListing</span>
+        </a>
+        <div class="hidden sm:flex items-center gap-6">
+          <a href="/#features" class="text-sm text-gray-600 hover:text-gray-900 transition">Features</a>
+          <a href="/#pricing" class="text-sm text-gray-600 hover:text-gray-900 transition">Pricing</a>
+          <a href="/#faq" class="text-sm text-gray-600 hover:text-gray-900 transition">FAQ</a>
+          <a href="/dashboard/sign-in" class="text-sm font-medium text-brand-600 hover:text-brand-700 transition">Sign In</a>
+          <a href="/dashboard/signup" class="text-sm font-medium bg-brand-600 text-white px-4 py-2 rounded-lg hover:bg-brand-700 transition">
+            Start Free
+          </a>
+        </div>
+      </div>
+    </div>
+  </nav>
+
   <div class="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
     <h1 class="text-3xl font-bold text-gray-900 mb-8">Privacy Policy</h1>
     <p class="text-sm text-gray-500 mb-8">Last updated: May 2026</p>
@@ -18,7 +39,6 @@ import Layout from '../layouts/Layout.astro';
       <ul>
         <li><strong>Account information:</strong> Your name, email address, and password (hashed).</li>
         <li><strong>Listing data:</strong> Product titles, descriptions, tags, and images you submit for optimization.</li>
-        <li><strong>Etsy shop data:</strong> If you connect your Etsy shop, we access your active listings, shop name, and product details through Etsy's official API.</li>
         <li><strong>Usage data:</strong> Number of optimizations performed, pages visited, and feature usage.</li>
         <li><strong>Payment information:</strong> Processed securely by Dodo Payments. We do not store your credit card details.</li>
       </ul>
@@ -27,26 +47,17 @@ import Layout from '../layouts/Layout.astro';
       <p>We use your information to:</p>
       <ul>
         <li>Provide AI-powered listing optimization services.</li>
-        <li>Audit your connected store listings and generate SEO scores.</li>
         <li>Send transactional emails (welcome, password reset, billing).</li>
         <li>Improve our AI models and service quality.</li>
         <li>Comply with legal obligations.</li>
       </ul>
 
-      <h2>3. Etsy API Data</h2>
-      <p>
-        When you connect your Etsy shop, we access your listing data through Etsy's Open API v3. We request only read access (listings_r, shops_r). We do not modify your Etsy listings without your explicit action. You can revoke our access at any time through your Etsy account settings or by disconnecting your shop in OptimListing Settings.
-      </p>
-      <p>
-        In accordance with Etsy's API Terms of Use, we cache listing data only for the duration necessary to provide our optimization services. We do not store raw Etsy listing data beyond what is needed for your optimization history. Cached data is refreshed when you re-run an audit.
-      </p>
-
-      <h2>4. Data Storage and Security</h2>
+      <h2>3. Data Storage and Security</h2>
       <p>
         Your data is stored on secure servers using industry-standard encryption. Passwords are hashed using bcrypt. We use JWT-based authentication for session management. Payment processing is handled by Dodo Payments, a PCI-compliant payment processor.
       </p>
 
-      <h2>5. Third-Party Services</h2>
+      <h2>4. Third-Party Services</h2>
       <p>We use the following third-party services:</p>
       <ul>
         <li><strong>Dodo Payments:</strong> Payment processing. <a href="https://dodopayments.com/privacy" class="text-brand-600 hover:underline">Privacy Policy</a></li>
@@ -54,16 +65,15 @@ import Layout from '../layouts/Layout.astro';
         <li><strong>OpenAI / DeepSeek:</strong> AI optimization processing. Listing data is sent to these services for text generation only and is not stored by them for training.</li>
       </ul>
 
-      <h2>6. Your Rights</h2>
+      <h2>5. Your Rights</h2>
       <p>You have the right to:</p>
       <ul>
         <li>Access your personal data.</li>
         <li>Request deletion of your account and all associated data.</li>
-        <li>Disconnect your Etsy shop at any time.</li>
         <li>Export your optimized listing history.</li>
       </ul>
 
-      <h2>7. Contact</h2>
+      <h2>6. Contact</h2>
       <p>
         For privacy-related inquiries, contact us at
         <a href="mailto:support@optimlisting.com" class="text-brand-600 hover:underline">privacy@optimlisting.com</a>.
