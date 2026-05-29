@@ -37,7 +37,7 @@ const year = new Date().getFullYear();
             <span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-brand-400 opacity-75"></span>
             <span class="relative inline-flex rounded-full h-2 w-2 bg-brand-500"></span>
           </span>
-          Now supporting Etsy, eBay & Amazon.
+          Now supporting Shopify, Etsy, eBay & Amazon.
         </div>
         <h1 class="text-4xl sm:text-5xl font-bold tracking-tight text-gray-900 mb-6 leading-tight">
           Get Found. Get Clicked. Get Sold.
@@ -55,6 +55,132 @@ const year = new Date().getFullYear();
           </a>
         </div>
         <p class="text-xs text-gray-500">No credit card required • Optimize 3 listings free</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Platform Selection Section -->
+  <section class="py-16 bg-white">
+    <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="grid md:grid-cols-2 gap-12 items-center">
+        
+        <!-- Left: Text -->
+        <div>
+          <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-brand-50 border border-brand-200 text-brand-700 text-sm mb-6">
+            <span class="relative flex h-2 w-2">
+              <span class="relative inline-flex rounded-full h-2 w-2 bg-brand-500"></span>
+            </span>
+            All major platforms supported
+          </div>
+          <h2 class="text-2xl font-bold text-gray-900 mb-4">
+            One Tool.<br/><span class="text-brand-600">All Your Marketplaces.</span>
+          </h2>
+          <p class="text-gray-600 text-sm mb-6 leading-relaxed">
+            Whether you sell on Etsy, eBay, Amazon, or Shopify — OptimListing helps you write better product listings that rank higher and convert more browsers into buyers. Choose your platform, paste your listing, and let AI do the heavy lifting.
+          </p>
+          <ul class="space-y-2 text-sm text-gray-700">
+            <li class="flex items-center gap-2">
+              <span class="text-green-500">✓</span> AI-powered SEO scoring for any platform
+            </li>
+            <li class="flex items-center gap-2">
+              <span class="text-green-500">✓</span> Optimized titles, descriptions, and tags
+            </li>
+            <li class="flex items-center gap-2">
+              <span class="text-green-500">✓</span> Platform-specific SEO best practices
+            </li>
+            <li class="flex items-center gap-2">
+              <span class="text-green-500">✓</span> Copy and paste directly to your store
+            </li>
+          </ul>
+        </div>
+
+        <!-- Right: Platform Cards SVG -->
+        <div class="flex justify-center">
+          <!-- Desktop: Side-by-side layout -->
+          <svg viewBox="0 0 380 400" class="w-full max-w-sm hidden sm:block" xmlns="http://www.w3.org/2000/svg">
+            <defs>
+              <filter id="shadow-lg" x="-5%" y="-5%" width="110%" height="110%">
+                <feDropShadow dx="0" dy="2" stdDeviation="6" flood-opacity="0.08"/>
+              </filter>
+              <linearGradient id="brandGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+                <stop offset="0%" stop-color="#38bdf8"/>
+                <stop offset="100%" stop-color="#0284c7"/>
+              </linearGradient>
+            </defs>
+
+            <!-- Cursor -->
+            <g transform="translate(310, 145)">
+              <path d="M0 0 L12 32 L8 34 L6 24 L0 30 Z" fill="#0284c7"/>
+            </g>
+
+            <!-- Shopify (selected) -->
+            <g filter="url(#shadow-lg)">
+              <rect x="10" y="50" width="360" height="56" rx="12" fill="white" stroke="url(#brandGrad)" stroke-width="2"/>
+              <text x="40" y="82" font-family="Inter, sans-serif" font-size="15" font-weight="600" fill="#0284c7">Shopify</text>
+              <text x="40" y="96" font-family="Inter, sans-serif" font-size="10" fill="#6b7280">Online store and point of sale</text>
+              <rect x="326" y="60" width="32" height="32" rx="8" fill="#0284c7"/>
+              <text x="342" y="81" text-anchor="middle" font-family="Inter, sans-serif" font-size="16" fill="white">✓</text>
+            </g>
+
+            <!-- Etsy -->
+            <g filter="url(#shadow-lg)">
+              <rect x="10" y="130" width="360" height="56" rx="12" fill="white" stroke="#e5e7eb" stroke-width="2"/>
+              <text x="40" y="162" font-family="Inter, sans-serif" font-size="15" font-weight="600" fill="#374151">Etsy</text>
+              <text x="40" y="176" font-family="Inter, sans-serif" font-size="10" fill="#6b7280">Handmade, vintage, and craft supplies</text>
+            </g>
+
+            <!-- eBay -->
+            <g filter="url(#shadow-lg)">
+              <rect x="10" y="210" width="360" height="56" rx="12" fill="white" stroke="#e5e7eb" stroke-width="2"/>
+              <text x="40" y="242" font-family="Inter, sans-serif" font-size="15" font-weight="600" fill="#374151">eBay</text>
+              <text x="40" y="256" font-family="Inter, sans-serif" font-size="10" fill="#6b7280">Auctions and fixed-price listings</text>
+            </g>
+
+            <!-- Amazon -->
+            <g filter="url(#shadow-lg)">
+              <rect x="10" y="290" width="360" height="56" rx="12" fill="white" stroke="#e5e7eb" stroke-width="2"/>
+              <text x="40" y="322" font-family="Inter, sans-serif" font-size="15" font-weight="600" fill="#374151">Amazon</text>
+              <text x="40" y="336" font-family="Inter, sans-serif" font-size="10" fill="#6b7280">Professional selling account</text>
+            </g>
+
+            <!-- Selected badge -->
+            <rect x="290" y="38" width="70" height="20" rx="10" fill="#0284c7"/>
+            <text x="325" y="52" text-anchor="middle" font-family="Inter, sans-serif" font-size="10" font-weight="600" fill="white">Selected</text>
+          </svg>
+
+          <!-- Mobile: Stacked layout -->
+          <div class="block sm:hidden w-full space-y-3">
+            <div class="flex items-center gap-3 p-3 rounded-xl border-2 border-brand-500 bg-brand-50">
+              <div class="w-8 h-8 rounded-lg bg-brand-500 flex items-center justify-center text-white text-sm font-bold">✓</div>
+              <div>
+                <p class="font-semibold text-sm text-brand-700">Shopify</p>
+                <p class="text-xs text-gray-500">Online store and point of sale</p>
+              </div>
+              <span class="ml-auto text-xs bg-brand-500 text-white px-2 py-0.5 rounded-full">Selected</span>
+            </div>
+            <div class="flex items-center gap-3 p-3 rounded-xl border border-gray-200 bg-white">
+              <div class="w-8 h-8 rounded-lg bg-gray-100 flex items-center justify-center text-gray-400 text-sm font-bold">•</div>
+              <div>
+                <p class="font-semibold text-sm text-gray-700">Etsy</p>
+                <p class="text-xs text-gray-500">Handmade, vintage, and craft supplies</p>
+              </div>
+            </div>
+            <div class="flex items-center gap-3 p-3 rounded-xl border border-gray-200 bg-white">
+              <div class="w-8 h-8 rounded-lg bg-gray-100 flex items-center justify-center text-gray-400 text-sm font-bold">•</div>
+              <div>
+                <p class="font-semibold text-sm text-gray-700">eBay</p>
+                <p class="text-xs text-gray-500">Auctions and fixed-price listings</p>
+              </div>
+            </div>
+            <div class="flex items-center gap-3 p-3 rounded-xl border border-gray-200 bg-white">
+              <div class="w-8 h-8 rounded-lg bg-gray-100 flex items-center justify-center text-gray-400 text-sm font-bold">•</div>
+              <div>
+                <p class="font-semibold text-sm text-gray-700">Amazon</p>
+                <p class="text-xs text-gray-500">Professional selling account</p>
+              </div>
+            </div>
+          </div>
+        </div>
       </div>
     </div>
   </section>
