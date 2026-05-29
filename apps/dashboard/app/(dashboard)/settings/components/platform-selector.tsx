@@ -13,6 +13,7 @@ interface PlatformSelectorProps {
 }
 
 const PLATFORMS = [
+  { id: "shopify", label: "Shopify", description: "Online store and point of sale", available: true },
   { id: "etsy", label: "Etsy", description: "Handmade, vintage, and craft supplies", available: true },
   { id: "ebay", label: "eBay", description: "Auctions and fixed-price listings", available: true },
   { id: "amazon", label: "Amazon", description: "Professional selling account", available: true },

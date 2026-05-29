@@ -49,5 +49,5 @@ export const PLANS = {
 
 export type PlanKey = keyof typeof PLANS;
 
-export const ALL_PLATFORMS = ["etsy", "ebay", "amazon"] as const;
+export const ALL_PLATFORMS = ["etsy", "ebay", "amazon", "shopify"] as const;
 export type Platform = (typeof ALL_PLATFORMS)[number];

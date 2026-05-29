@@ -40,6 +40,7 @@ interface OptimizationData {
 }
 
 const PLATFORM_OPTIONS = [
+  { value: "shopify", label: "Shopify" },
   { value: "etsy", label: "Etsy" },
   { value: "ebay", label: "eBay" },
   { value: "amazon", label: "Amazon" },
