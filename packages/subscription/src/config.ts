@@ -14,7 +14,7 @@ export const PLANS = {
     platforms: 1,
     features: [
       "3 listing optimizations",
-      "1 platform (Etsy, eBay, or Amazon)",
+      "1 platform (Etsy, eBay, Amazon or Shopify)",
       "Basic AI optimization",
     ],
   },
@@ -27,22 +27,18 @@ export const PLANS = {
       "15 listing optimizations",
       "1 platform of choice",
       "Advanced AI optimization",
-      "Bulk processing (soon)",
-      // "Connect your store",
     ],
   },
   PROFESSIONAL: {
     name: "Professional",
-    price: 16,
+    price: 18,
     optimizationsPerMonth: -1,
     platforms: -1,
     features: [
       "Unlimited optimizations",
-      "All platforms (Etsy, eBay, Amazon)",
+      "All platforms (Etsy, eBay, Amazon, Shopify)",
       "Priority AI processing",
       "CSV bulk import (soon)",
-      // "Store integration",
-      // "eBay & Amazon (coming soon)",
     ],
   },
 } as const satisfies Record<string, PlanConfig>;
