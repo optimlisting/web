@@ -3,7 +3,7 @@ import { Check, Zap } from "@lucide/astro";
 import { PLANS } from "../consts";
 ---
 
-<section class="py-24 relative" style={{ background: "#070B18" }}>
+<section id="pricing" class="py-14 md:py-24 relative" style={{ background: "#070B18" }}>
   <div
     class="absolute top-0 left-0 right-0 h-px"
     style={{ background: "linear-gradient(90deg, transparent, rgba(124,58,237,0.3), transparent)" }}
@@ -106,7 +106,7 @@ import { PLANS } from "../consts";
           </ul>
 
           <a
-            href="#"
+            href={plan.name === "Free" ? "/dashboard/signup" : plan.name === "Starter" ? "/dashboard/signup?plan=starter" : "/dashboard/signup?plan=pro"}
             class="w-full flex items-center justify-center gap-2 py-3.5 rounded-xl transition-all duration-200 hover:opacity-90 hover:scale-[1.02]"
             style={{
               background: plan.highlight
