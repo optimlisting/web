@@ -2,19 +2,19 @@
 
 import { useEffect } from "react";
 import { useSearchParams } from "next/navigation";
+import type { PlanKey, PlanConfig } from "@optim/subscription";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@optim/ui/components/card";
 import { Avatar, AvatarFallback, AvatarImage } from "@optim/ui/components/avatar";
 import { Badge } from "@optim/ui/components/badge";
-// import { Separator } from "@optim/ui/components/separator";
-import { User, Mail, Sparkles, Check, CreditCard } from "lucide-react";
+import { Check, CreditCard, Zap } from "lucide-react";
 
 import { PlatformSelector } from "./components/platform-selector";
 import { ManageBilling } from "./components/manage-billing";
 import { UpgradePlans } from "./components/upgrade-plans";
-// import { EtsyConnect } from "./components/etsy-connect";
 import { DangerZone } from "./components/danger-zone";
 
 interface SettingsClientProps {
+  plans: Record<PlanKey, PlanConfig>;
   user: {
     id: string;
     name: string;
@@ -40,7 +40,8 @@ export function SettingsClient({
   user,
   subscription,
   planConfig,
-  selectedPlatform
+  selectedPlatform,
+  plans
 }: SettingsClientProps) {
   const initials = user.name
     .split(" ")
@@ -71,34 +72,43 @@ export function SettingsClient({
   }, [upgradeParam]);
 
   return (
-    <div className="space-y-6">
+    <div className="space-y-6 max-w-3xl">
       <div>
-        <h1 className="text-2xl font-bold text-gray-900">Settings</h1>
-        <p className="text-sm text-gray-600 mt-1">
+        <h1 className="font-bricolage font-extrabold text-3xl text-foreground leading-[1.1]">Settings</h1>
+        <p className="text-[0.92rem] text-muted-foreground mt-1">
           Manage your account and subscription.
         </p>
       </div>
 
       {/* Account */}
       <Card>
-        <CardHeader>
-          <CardTitle>Account</CardTitle>
-          <CardDescription>Your personal information.</CardDescription>
+        <CardHeader className="border-b border-[rgba(255,255,255,0.07)]">
+          <CardTitle className="font-bricolage font-bold text-foreground">Account</CardTitle>
+          <CardDescription className="text-muted-foreground">Your personal information.</CardDescription>
         </CardHeader>
         <CardContent>
           <div className="flex items-center gap-4">
-            <Avatar className="h-16 w-16">
+            <Avatar
+              className="h-12 w-12"
+              style={{ border: user.image ? "2px solid rgba(124,58,237,0.3)" : "" }}
+            >
               <AvatarImage src={user.image || undefined} />
-              <AvatarFallback className="text-lg">{initials}</AvatarFallback>
+              <AvatarFallback
+                className="font-bricolage font-bold text-foreground text-[1rem]"
+                style={{
+                  background: "linear-gradient(135deg, rgba(124,58,237,0.35), rgba(0,229,160,0.25))",
+                  border: "2px solid rgba(124,58,237,0.3)"
+                }}
+              >
+                {initials}
+              </AvatarFallback>
             </Avatar>
             <div>
               <div className="flex items-center gap-2">
-                <User className="w-4 h-4 text-gray-400" />
-                <span className="font-medium text-gray-900">{user.name}</span>
+                <span className="font-semibold text-foreground text-[0.95rem]">{user.name}</span>
               </div>
               <div className="flex items-center gap-2 mt-1">
-                <Mail className="w-4 h-4 text-gray-400" />
-                <span className="text-sm text-gray-600">{user.email}</span>
+                <span className="text-muted-foreground text-[0.85rem]">{user.email}</span>
               </div>
             </div>
           </div>
@@ -110,29 +120,33 @@ export function SettingsClient({
         selectedPlatform={selectedPlatform}
       />
 
-      {/* Plaform Integration */}
-      {/* {(selectedPlatform === "etsy" || subscription.plan === "PROFESSIONAL") && (
-        <EtsyConnect plan={subscription.plan} />
-      )} */}
-
       {/* Subscription */}
       <Card>
-        <CardHeader>
-          <CardTitle>Subscription</CardTitle>
-          <CardDescription>Your current plan and billing.</CardDescription>
+        <CardHeader className="border-b border-[rgba(255,255,255,0.07)]">
+          <CardTitle className="font-bricolage font-bold text-foreground">Subscription</CardTitle>
+          <CardDescription className="text-muted-foreground">Your current plan and billing.</CardDescription>
         </CardHeader>
         <CardContent className="space-y-6">
-          <div className="flex items-center justify-between p-4 bg-gray-50 rounded-xl">
+          {/* Current plan */}
+          <div
+            className="flex items-center justify-between p-4 rounded-xl border mb-5"
+            style={{ background: "rgba(124,58,237,0.06)", borderColor: "rgba(124,58,237,0.2)" }}
+          >
             <div className="flex items-center gap-3">
-              <div className="w-10 h-10 rounded-full bg-brand-100 flex items-center justify-center">
-                <Sparkles className="w-5 h-5 text-brand-600" />
+              <div
+                className="w-9 h-9 rounded-lg flex items-center justify-center flex-shrink-0"
+                style={{ background: "rgba(124,58,237,0.15)" }}
+              >
+                <Zap size={16} style={{ color: "#A78BFA" }} />
               </div>
-              <div>
+              <div className="flex-1">
                 <div className="flex items-center gap-2">
-                  <span className="font-semibold text-gray-900">
+                  <span style={{ color: "#EEF2FF", fontWeight: 700, fontSize: "0.9rem" }}>
                     {planConfig.name} Plan
                   </span>
                   <Badge
+                    className="px-2 py-0.5 rounded-full text-xs font-bold"
+                    style={{ background: "rgba(0,229,160,0.12)", color: "#00E5A0" }}
                     variant={
                       subscription.status === "ACTIVE" ? "default" : "destructive"
                     }
@@ -140,49 +154,48 @@ export function SettingsClient({
                     {subscription.status}
                   </Badge>
                 </div>
-                <p className="text-sm text-gray-600 mt-0.5">
+                <div style={{ color: "#8899BB", fontSize: "0.8rem" }}>
                   {planConfig.price === 0
                     ? "Free forever"
                     : `$${planConfig.price}/month`}
                   {planConfig.optimizationsPerMonth === -1
                     ? " · Unlimited optimizations"
                     : ` · ${planConfig.optimizationsPerMonth} optimizations/mo`}
-                </p>
+                </div>
               </div>
             </div>
             <ManageBilling isPaidPlan={isPaidPlan} />
           </div>
 
+          {periodEnd && isPaidPlan && (
+            <div className="flex items-center gap-2 text-sm text-muted-foreground">
+              <CreditCard className="w-4 h-4" />
+              Current period ends on {periodEnd}
+            </div>
+          )}
+
+          {/* Plan features */}
           <div>
-            <h4 className="text-sm font-medium text-gray-900 mb-3">
+            <h4 className="text-[0.82rem] font-semibold text-muted-foreground mb-3 tracking-[0.06em] uppercase">
               Plan Features
             </h4>
             <ul className="space-y-2">
               {planConfig.features.map((feature, i) => (
                 <li
                   key={i}
-                  className="flex items-center gap-2 text-sm text-gray-700"
+                  className="flex items-center gap-2"
                 >
-                  <Check className="w-4 h-4 text-green-500 flex-shrink-0" />
-                  {feature}
+                  <Check className="w-4 h-4 stroke-[3] text-[#00E5A0] flex-shrink-0" />
+                  <span className="text-[#C4D0F0] text-[0.88rem]">{feature}</span>
                 </li>
               ))}
             </ul>
           </div>
 
-          {periodEnd && isPaidPlan && (
-            <div className="flex items-center gap-2 text-sm text-gray-600">
-              <CreditCard className="w-4 h-4 text-gray-400" />
-              Current period ends on {periodEnd}
-            </div>
-          )}
+          {/* Upgrade plans */}
+          <UpgradePlans plans={plans} currentPlan={subscription.plan} user={user} />
         </CardContent>
       </Card>
-
-      {/* Upgrade Plans */}
-      <div id="upgrade-plans">
-        <UpgradePlans currentPlan={subscription.plan} user={user} />
-      </div>
 
       {/* Danger Zone */}
       <DangerZone />

@@ -8,8 +8,6 @@ import { z } from "zod";
 import { toast } from "sonner";
 import Link from "next/link";
 import { authClient } from "@optim/auth/src/client";
-import { Button } from "@optim/ui/components/button";
-import { Input } from "@optim/ui/components/input";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@optim/ui/components/card";
 import {
   Form,
@@ -18,14 +16,14 @@ import {
   FormLabel,
   FormMessage,
 } from "@optim/ui/components/form";
-import { Spinner } from "@optim/ui/lib/loading";
-import { Check } from "lucide-react";
+import { Spinner, LoadingDots } from "@optim/ui/lib/loading";
+import { ArrowRight, Check } from "lucide-react";
 
 function HeaderLogo() {
   return (
-    <div className="flex flex-col items-center gap-2 mb-4">
-      <img src="/optim-logo.svg" alt="OptimListing" className="flex h-10 justify-self-center" />
-      <span className="text-xl font-bold text-brand-600">OptimListing</span>
+    <div className="flex flex-col items-center gap-2 mb-5">
+      <img src="/dashboard/optim-logo.svg" alt="OptimListing" className="flex size-9 justify-self-center" />
+      <span className="text-xl font-bricolage font-bold text-foreground">OptimListing</span>
     </div>
   )
 }
@@ -88,15 +86,15 @@ function ResetPasswordForm() {
   if (!token) {
     return (
       <Card className="max-w-md w-full">
-        <CardHeader className="text-center">
-          <CardTitle className="text-2xl font-bold">Invalid Link</CardTitle>
-          <CardDescription>
+        <CardHeader className="text-center mb-2">
+          <CardTitle className="text-2xl text-foreground font-bricolage font-bold mb-2">Invalid Link</CardTitle>
+          <CardDescription className="text-muted-foreground">
             This password reset link is invalid or missing. Please request a new one.
           </CardDescription>
         </CardHeader>
         <CardContent className="text-center">
-          <Link href="/forgot-password">
-            <Button>Request New Link</Button>
+          <Link href="/forgot-password" className="flex items-center gap-2 w-fit mx-auto text-sm text-foreground hover:text-muted-foreground transition">
+            Request New Link <ArrowRight size={17} />
           </Link>
         </CardContent>
       </Card>
@@ -106,9 +104,9 @@ function ResetPasswordForm() {
   if (done) {
     return (
       <Card className="max-w-md w-full">
-        <CardHeader className="text-center">
-          <div className="w-12 h-12 rounded-full bg-green-100 flex items-center justify-center mx-auto mb-4">
-            <Check className="w-6 h-6 text-green-600" />
+        <CardHeader className="text-center mb-2">
+          <div className="w-12 h-12 rounded-full bg-transparet border border-[#00E5A0] flex items-center justify-center mx-auto mb-4">
+            <Check className="w-6 h-6 text-[#00E5A0]" />
           </div>
           <CardTitle className="text-2xl font-bold">Password Reset!</CardTitle>
           <CardDescription>
@@ -116,8 +114,8 @@ function ResetPasswordForm() {
           </CardDescription>
         </CardHeader>
         <CardContent className="text-center">
-          <Link href="/sign-in">
-            <Button>Go to Sign In</Button>
+          <Link href="/sign-in" className="flex items-center gap-2 w-fit mx-auto text-sm text-foreground hover:text-muted-foreground transition">
+            Go to Sign In <ArrowRight size={17} />
           </Link>
         </CardContent>
       </Card>
@@ -127,8 +125,8 @@ function ResetPasswordForm() {
   return (
     <Card className="max-w-md w-full">
       <CardHeader className="text-center">
-        <CardTitle className="text-2xl font-bold">Reset Password</CardTitle>
-        <CardDescription>Enter your new password below.</CardDescription>
+        <CardTitle className="text-2xl font-bricolage font-bold text-foreground">Reset Password</CardTitle>
+        <CardDescription className="text-muted-foreground">Enter your new password below.</CardDescription>
       </CardHeader>
       <CardContent>
         <Form {...form}>
@@ -138,12 +136,24 @@ function ResetPasswordForm() {
               name="password"
               render={({ field }) => (
                 <FormItem>
-                  <FormLabel>New Password</FormLabel>
-                  <Input
+                  <FormLabel className="text-[#C4D0F0] text-[0.85rem] font-semibold mb-2">
+                    New Password
+                  </FormLabel>
+                  <input
+                    type={"password"}
                     {...field}
-                    type="password"
                     placeholder="••••••••"
                     disabled={loading}
+                    minLength={8}
+                    className="w-full px-4 py-3 pr-12 rounded-xl outline-none transition-all duration-200"
+                    style={{
+                      background: "rgba(255,255,255,0.04)",
+                      border: "1px solid rgba(255,255,255,0.09)",
+                      color: "#EEF2FF",
+                      fontSize: "0.92rem",
+                    }}
+                    onFocus={e => (e.target.style.borderColor = "rgba(124,58,237,0.6)")}
+                    onBlur={e => (e.target.style.borderColor = "rgba(255,255,255,0.09)")}
                   />
                   <FormMessage />
                 </FormItem>
@@ -155,28 +165,48 @@ function ResetPasswordForm() {
               name="confirmPassword"
               render={({ field }) => (
                 <FormItem>
-                  <FormLabel>Confirm Password</FormLabel>
-                  <Input
+                  <FormLabel className="text-[#C4D0F0] text-[0.85rem] font-semibold mb-2">
+                    Confirm Password
+                  </FormLabel>
+                  <input
+                    type={"password"}
                     {...field}
-                    type="password"
                     placeholder="••••••••"
                     disabled={loading}
+                    minLength={8}
+                    className="w-full px-4 py-3 pr-12 rounded-xl outline-none transition-all duration-200"
+                    style={{
+                      background: "rgba(255,255,255,0.04)",
+                      border: "1px solid rgba(255,255,255,0.09)",
+                      color: "#EEF2FF",
+                      fontSize: "0.92rem",
+                    }}
+                    onFocus={e => (e.target.style.borderColor = "rgba(124,58,237,0.6)")}
+                    onBlur={e => (e.target.style.borderColor = "rgba(255,255,255,0.09)")}
                   />
                   <FormMessage />
                 </FormItem>
               )}
             />
 
-            <Button type="submit" className="w-full" disabled={loading}>
+            <button
+              type="submit"
+              disabled={loading}
+              className="w-full flex items-center justify-center gap-2 h-12 rounded-xl transition-all duration-200 hover:opacity-90 hover:scale-[1.01] mt-2 cursor-pointer"
+              style={{
+                background: "linear-gradient(135deg, #7C3AED, #5B21B6)",
+                color: "#fff",
+                fontWeight: 700,
+                fontSize: "0.97rem",
+                boxShadow: "0 0 28px rgba(124,58,237,0.4)",
+              }}
+            >
               {loading ? (
-                <>
-                  <Spinner className="w-4 h-4 mr-2" />
-                  Resetting...
-                </>
+                <LoadingDots className="bg-foreground" />
               ) : (
                 "Reset Password"
               )}
-            </Button>
+            </button>
           </form>
         </Form>
       </CardContent>
@@ -186,13 +216,16 @@ function ResetPasswordForm() {
 
 export default function ResetPasswordPage() {
   return (
-    <div className="min-h-screen flex flex-col items-center justify-center bg-gray-50">
+    <div
+      className="min-h-screen flex flex-col items-center justify-center font-manrope"
+      style={{ background: "#070B18", fontFamily: "'Manrope', sans-serif" }}
+    >
       <HeaderLogo />
       <Suspense
         fallback={
           <Card className="max-w-md w-full">
             <CardContent className="py-12 text-center">
-              <Spinner className="w-8 h-8 text-brand-600 mx-auto" />
+              <Spinner className="w-8 h-8 text-foreground mx-auto" />
             </CardContent>
           </Card>
         }

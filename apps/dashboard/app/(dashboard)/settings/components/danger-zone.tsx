@@ -36,27 +36,28 @@ export function DangerZone() {
 
   return (
     <>
-      <Card className="border-red-200">
-        <CardHeader>
-          <CardTitle className="text-red-600">Danger Zone</CardTitle>
-          <CardDescription>
+      <Card className="py-0 bg-[rgba(239,68,68,0.04)] border border-[rgba(239,68,68,0.2)]">
+        <CardHeader className="py-4 border-b border-[rgba(239,68,68,0.15)]">
+          <CardTitle className="font-bricolage font-bold text-[#ef4444] text-[1rem]">Danger Zone</CardTitle>
+          <CardDescription className="text-[0.82rem] text-muted-foreground">
             Irreversible actions for your account. All your data will be permanently deleted.
           </CardDescription>
         </CardHeader>
         <CardContent>
-          <div className="flex items-center justify-between">
+          <div className="py-5 flex items-center justify-between">
             <div>
-              <p className="text-sm font-medium text-gray-900">Delete Account</p>
-              <p className="text-sm text-gray-600">
+              <p className="text-[#EEF2FF] text-[0.9rem] font-semibold">Delete Account</p>
+              <p className="text-[0.82rem] text-muted-foreground">
                 Permanently delete your account, listings, and all associated data.
               </p>
             </div>
             <Button
+              className="gap-2 px-4 py-5 font-bold border border-[rgba(239,68,68,0.4)]"
               variant="destructive"
               size="sm"
               onClick={() => setShowDialog(true)}
             >
-              <Trash2 className="w-4 h-4 mr-2" />
+              <Trash2 className="w-4 h-4" />
               Delete Account
             </Button>
           </div>

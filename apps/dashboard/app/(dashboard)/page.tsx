@@ -1,74 +1,14 @@
+import Link from "next/link";
 import { Suspense } from "react";
 import { getSession } from "@optim/auth";
-import { SignOutButton } from "./components/sign-out-button";
 import { redirect } from "next/navigation";
-import { getUsageLimit } from "@optim/subscription";
-import { getListingStats } from "@optim/db/listing-service";
-import { Button } from "@optim/ui/components/button";
-import { Card, CardContent, CardHeader, CardTitle } from "@optim/ui/components/card";
-import { Avatar, AvatarFallback } from "@optim/ui/components/avatar";
-import { Progress } from "@optim/ui/components/progress";
+import { getListingsByUser, getListingStats } from "@optim/db/listing-service";
+import { Card, CardContent } from "@optim/ui/components/card";
+import { DashboardStats } from "./components/dashboar-stats";
 import { CardSkeleton } from "@optim/ui/lib/loading";
-import { List, TrendingUp, Star } from "lucide-react";
+import { serializeListing, getMarketplaceColor, dateFormatterUS } from "@/lib/utils";
+import { Star, Sparkles, Clock, ArrowRight } from "lucide-react";
 
-async function DashboardStats({ userId }: { userId: string }) {
-  const [usage, listingStats] = await Promise.all([
-    getUsageLimit(userId),
-    getListingStats(userId),
-  ]);
-
-  const usagePercent = usage.isUnlimited ? 0 : Math.round((usage.used / usage.limit) * 100);
-
-  return (
-    <>
-      <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-8">
-        <Card>
-          <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
-            <CardTitle className="text-sm font-medium">Optimizations Used</CardTitle>
-          </CardHeader>
-          <CardContent>
-            <div className="text-2xl font-bold">
-              {usage.used}
-              {!usage.isUnlimited && (
-                <span className="text-gray-400 text-lg"> / {usage.limit}</span>
-              )}
-            </div>
-            {!usage.isUnlimited && (
-              <Progress value={usagePercent} className="mt-3" />
-            )}
-          </CardContent>
-        </Card>
-        <Card>
-          <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
-            <CardTitle className="text-sm font-medium">Total Listings</CardTitle>
-          </CardHeader>
-          <CardContent>
-            <div className="flex items-center gap-2">
-              <List className="w-5 h-5 text-gray-400" />
-              <div className="text-2xl font-bold">{listingStats.total}</div>
-            </div>
-            <p className="text-xs text-gray-500 mt-1">
-              <TrendingUp className="w-3 h-3 inline mr-1" />
-              {listingStats.thisMonth} this month
-            </p>
-          </CardContent>
-        </Card>
-        <Card>
-          <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
-            <CardTitle className="text-sm font-medium">Avg SEO Score</CardTitle>
-          </CardHeader>
-          <CardContent>
-            <div className="flex items-center gap-2">
-              <Star className="w-5 h-5 text-yellow-400 fill-yellow-400" />
-              <div className="text-2xl font-bold">{listingStats.avgSeoScore}</div>
-            </div>
-            <p className="text-xs text-gray-500 mt-1">{listingStats.total > 0 ? "Across all listings" : "No listings yet"}</p>
-          </CardContent>
-        </Card>
-      </div>
-    </>
-  );
-}
 
 export default async function DashboardPage() {
   const session = await getSession();
@@ -77,24 +17,38 @@ export default async function DashboardPage() {
     redirect("/sign-in");
   }
 
-  const initials = session.user.name
-    ? session.user.name.split(" ").map((n) => n[0]).join("").toUpperCase()
-    : session.user.email?.[0]?.toUpperCase() ?? "U";
+  const [result, listingStats] = await Promise.all([
+      getListingsByUser(session.user.id!, { limit: 3 }),
+      getListingStats(session.user.id),
+    ]);
+  
+  // Serialize listings for the client component
+  const serializedListings = result.listings.map(serializeListing);
 
   return (
     <div>
       <div className="flex justify-between items-center mb-8">
         <div>
-          <h1 className="text-2xl font-bold text-gray-900">Dashboard</h1>
-          <p className="text-sm text-gray-600 mt-1">
+          <h1 className="text-3xl font-bricolage font-extrabold text-foreground leading-[1.1]">Dashboard</h1>
+          <p className="text-[0.92rem] text-muted-foreground mt-1">
             Welcome back, {session.user.name || session.user.email}
           </p>
         </div>
         <div className="flex items-center gap-4">
-          <Avatar>
-            <AvatarFallback>{initials}</AvatarFallback>
-          </Avatar>
-          <SignOutButton />
+          <Link
+            href="/optimize"
+            className="flex items-center gap-2 px-4 py-2.5 rounded-xl transition-all duration-200 hover:opacity-90 hover:scale-[1.02]"
+            style={{
+              background: "linear-gradient(135deg, #7C3AED, #5B21B6)",
+              color: "#fff",
+              fontSize: "0.88rem",
+              fontWeight: 600,
+              boxShadow: "0 0 20px rgba(124,58,237,0.35)",
+            }}
+          >
+            <Sparkles size={15} />
+            New Optimization
+          </Link>
         </div>
       </div>
 
@@ -105,22 +59,122 @@ export default async function DashboardPage() {
           <CardSkeleton />
         </div>
       }>
-        <DashboardStats userId={session.user.id!} />
+        <DashboardStats listingStats={listingStats!} />
       </Suspense>
 
-      <Card>
-        <CardContent className="py-12">
-          <div className="text-center">
-            <h3 className="text-lg font-medium text-gray-900 mb-2">
-              Start Optimizing
-            </h3>
-            <p className="text-gray-600 text-sm mb-4">
-              Go to the Optimize page to improve your marketplace listings.
-            </p>
-            <a href="/dashboard/optimize">
-              <Button>Go to Optimize →</Button>
-            </a>
+      {/* Recent listings */}
+      <div
+        className="rounded-2xl border mb-6"
+        style={{ background: "rgba(13,19,39,0.7)", borderColor: "rgba(255,255,255,0.07)" }}
+      >
+        <div
+          className="flex items-center justify-between px-6 py-4 border-b"
+          style={{ borderColor: "rgba(255,255,255,0.06)" }}
+        >
+          <h3 style={{ fontFamily: "'Bricolage Grotesque', sans-serif", fontWeight: 700, color: "#EEF2FF", fontSize: "1rem" }}>
+            Recent Optimizations
+          </h3>
+          {serializedListings.length > 0 && (
+            <Link
+              href="/listings"
+              className="flex items-center gap-1 transition-colors hover:text-white"
+              style={{ color: "#8899BB", fontSize: "0.82rem", fontWeight: 500 }}
+            >
+              View all <ArrowRight size={13} />
+            </Link>
+          )}
+        </div>
+        <div className="divide-y" style={{ borderColor: "rgba(255,255,255,0.05)" }}>
+          {serializedListings.length === 0 ? (
+            <div className="py-16 text-center">
+              <p style={{ color: "#8899BB", fontSize: "0.9rem" }}>No optimizations found.</p>
+            </div>
+          ) : (
+            <>
+              {serializedListings.map((item, i) => {
+                const color = getMarketplaceColor(item.marketplace);
+                const date = dateFormatterUS.format(new Date(item.createdAt));
+                return (
+                  <div key={i} className="flex items-center gap-4 px-6 py-4" style={{ borderColor: "rgba(255,255,255,0.05)" }}>
+                    <div
+                      className="w-9 h-9 rounded-lg flex items-center justify-center flex-shrink-0"
+                      style={{ background: `${color}18` }}
+                    >
+                      <Sparkles size={15} style={{ color: `${color}` }} />
+                    </div>
+                    <div className="flex-1 min-w-0">
+                      <div style={{ color: "#EEF2FF", fontSize: "0.88rem", fontWeight: 500, overflow: "hidden", textOverflow: "ellipsis", whiteSpace: "nowrap" }}>
+                        {item.optimizedTitle}
+                      </div>
+                      <div className="flex items-center gap-2 mt-0.5">
+                        <span
+                          className="px-2 py-0.5 rounded-md text-xs font-semibold"
+                          style={{ background: `${color}18`, color: `${color}` }}
+                        >
+                          {item.marketplace}
+                        </span>
+                        <div className="flex items-center gap-1">
+                          <Clock size={11} style={{ color: "#8899BB" }} />
+                          <span style={{ color: "#8899BB", fontSize: "0.75rem" }}>{date}</span>
+                        </div>
+                      </div>
+                    </div>
+                    <div
+                      className="flex items-center gap-1.5 px-3 py-1.5 rounded-xl flex-shrink-0"
+                      style={{ background: "rgba(245,158,11,0.1)", border: "1px solid rgba(245,158,11,0.2)" }}
+                    >
+                      <Star size={12} fill="#F59E0B" stroke="none" />
+                      <span style={{ color: "#F59E0B", fontSize: "0.82rem", fontWeight: 700 }}>{item.seoScore}</span>
+                    </div>
+                  </div>
+                );
+              })}
+            </>
+          )}
+        </div>
+      </div>
+
+      {/* Optimize CTA banner */}
+      <Card
+        className="border p-8 text-center relative overflow-hidden"
+        style={{
+          background: "linear-gradient(135deg, rgba(124,58,237,0.12) 0%, rgba(0,229,160,0.06) 100%)",
+          borderColor: "rgba(124,58,237,0.25)",
+        }}
+      >
+        <div
+          className="absolute inset-0 pointer-events-none"
+          style={{ background: "radial-gradient(ellipse at center, rgba(124,58,237,0.08) 0%, transparent 70%)" }}
+        />
+        <CardContent className="relative z-10">
+          <div
+            className="w-12 h-12 rounded-2xl flex items-center justify-center mx-auto mb-4"
+            style={{ background: "rgba(124,58,237,0.15)", border: "1px solid rgba(124,58,237,0.3)" }}
+          >
+            <Sparkles size={22} style={{ color: "#A78BFA" }} />
           </div>
+          <h3
+            className="mb-2"
+            style={{ fontFamily: "'Bricolage Grotesque', sans-serif", fontWeight: 700, fontSize: "1.3rem", color: "#EEF2FF" }}
+          >
+            Ready to Optimize?
+          </h3>
+          <p className="mb-5" style={{ color: "#8899BB", fontSize: "0.9rem", lineHeight: 1.6 }}>
+            Paste your listing and let AI rewrite it for maximum visibility and sales.
+          </p>
+          <Link
+            href="/optimize"
+            className="inline-flex items-center gap-2 px-6 py-3 rounded-xl transition-all duration-200 hover:scale-[1.02] hover:opacity-90"
+            style={{
+              background: "linear-gradient(135deg, #7C3AED, #5B21B6)",
+              color: "#fff",
+              fontWeight: 700,
+              fontSize: "0.92rem",
+              boxShadow: "0 0 24px rgba(124,58,237,0.4)",
+            }}
+          >
+            Go to Optimize <ArrowRight size={16} />
+          </Link>
         </CardContent>
       </Card>
     </div>

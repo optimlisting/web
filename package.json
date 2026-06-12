@@ -6,9 +6,9 @@
     "dev": "turbo run dev",
     "dev:landing": "turbo run dev --filter=landing",
     "dev:dashboard": "turbo run dev --filter=dashboard",
-    "db:push": "pnpm --filter @optimlisting/db run db:push",
-    "db:generate": "pnpm --filter @optimlisting/db run db:generate",
-    "db:studio": "pnpm --filter @optimlisting/db run db:studio",
+    "db:push": "pnpm --filter @optim/db run db:push",
+    "db:generate": "pnpm --filter @optim/db run db:generate",
+    "db:studio": "pnpm --filter @optim/db run db:studio",
     "lint": "turbo run lint",
     "format": "prettier --write \"**/*.{ts,tsx,md}\"",
     "check-types": "turbo run check-types"

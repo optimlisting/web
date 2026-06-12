@@ -107,6 +107,13 @@ pnpm exec turbo dev --filter=landing
 pnpm exec turbo dev --filter=landing
 ```
 
+To run a local development server for emails UI development, create a new folder called 'emails' in `packages/email/` and copy any of the templates' files into it or create a new one, eg. `trial-ending.tsx`. Make sure to default export the component to view it in the react-emails dashboard. Then you can do the following:
+
+```sh
+cd packages/email
+pnpm dev
+```
+
 ## Useful Links
 
 Learn more about the power of Turborepo:

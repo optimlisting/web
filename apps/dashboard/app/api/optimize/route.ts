@@ -27,9 +27,9 @@ export async function POST(request: Request) {
       );
     }
 
-    if (!title || !description || !marketplace) {
+    if (!title || !marketplace) {
       return NextResponse.json(
-        { error: "Missing required fields: title, description, marketplace" },
+        { error: "Missing required fields: title, marketplace" },
         { status: 400 }
       );
     }
@@ -54,7 +54,7 @@ export async function POST(request: Request) {
 
     const input: ListingInput = {
       title,
-      description,
+      description: description ?? "",
       tags: Array.isArray(tags) ? tags : [],
       marketplace,
     };
@@ -83,6 +83,7 @@ export async function POST(request: Request) {
       optimizedTags: result.data!.tags,
       seoScore: result.data!.seoScore,
       improvements: result.data!.improvements,
+      improvementBreakdown: result.data!.improvementBreakdown,
       tokensUsed: result.tokensUsed || 0,
     });
 

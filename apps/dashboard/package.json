@@ -12,6 +12,8 @@
   },
   "dependencies": {
     "@dodopayments/nextjs": "^0.3.6",
+    "@fontsource-variable/bricolage-grotesque": "^5.2.10",
+    "@fontsource-variable/manrope": "^5.2.8",
     "@hookform/resolvers": "^5.2.2",
     "@optim/auth": "workspace:*",
     "@optim/connections": "workspace:*",

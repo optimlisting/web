@@ -1,0 +1,82 @@
+---
+import { FEATURES } from "../consts";
+---
+
+<section class="py-24" style={{ background: "#070B18" }}>
+  <div class="max-w-7xl mx-auto px-6">
+    {/* Header */}
+    <div class="text-center mb-16">
+      <div
+        class="inline-flex items-center gap-2 px-4 py-1.5 rounded-full border mb-5"
+        style={{ borderColor: "rgba(0,229,160,0.3)", background: "rgba(0,229,160,0.07)" }}
+      >
+        <span style={{ color: "#00E5A0", fontFamily: "'Manrope Variable', sans-serif", fontSize: "0.8rem", fontWeight: 600 }}>FEATURES</span>
+      </div>
+      <h2
+        class="font-bricolage font-extrabold text-[#EEF2FF] tracking-[-0.02em]"
+        style={{
+          fontSize: "clamp(2rem, 4vw, 3.2rem)",
+          lineHeight: 1.1,
+        }}
+      >
+        Built for Sellers Who Want{" "}
+        <span style={{ color: "#00E5A0" }}>Results</span>
+      </h2>
+      <p
+        class="mt-4 max-w-xl mx-auto"
+        style={{ fontFamily: "'Manrope Variable', sans-serif", color: "#8899BB", fontSize: "1.05rem", lineHeight: 1.7 }}
+      >
+        Every feature is designed to move one metric: your sales. Not vanity metrics — actual revenue.
+      </p>
+    </div>
+
+    {/* Grid */}
+    <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-5">
+      {FEATURES.map((f, i) => {
+        const Icon = f.icon;
+        return (
+          <div
+            data-accent={f.accent}
+            class={`
+              hover-card group p-6 rounded-2xl border transition-all duration-300 hover:-translate-y-1 cursor-default
+              bg-[rgba(13,19,39,0.6)] hover:bg-[rgba(13,19,39,0.9)] border-[rgba(255,255,255,0.07)]
+            `}
+          >
+            <div
+              class="w-11 h-11 rounded-xl flex items-center justify-center mb-5"
+              style={{ background: `${f.accent}18` }}
+            >
+              <Icon size={20} style={{ color: f.accent }} />
+            </div>
+            <h3 class="font-bricolage font-bold text-[1.1rem] text-[#EEF2FF] mb-2">
+              {f.title}
+              {f.title === "Bulk Optimize" && (
+                <span class="font-manrope text-xs font-bold text-[#00E5A0] px-2 py-0.5 rounded-md bg-[rgba(0,229,160,0.12)]">
+                  coming soon
+                </span>
+              )}
+            </h3>
+            <p
+              class="font-manrope text-[#8899BB] text-[0.9rem]"
+              style={{ lineHeight: 1.65 }}>
+              {f.desc}
+            </p>
+          </div>
+        );
+      })}
+    </div>
+  </div>
+</section>
+<script>
+  document.querySelectorAll('.hover-card').forEach((card: any) => {
+    const accent = card.dataset.accent;
+    
+    card.addEventListener('mouseenter', () => {
+      card.style.borderColor = `${accent}44`;
+    });
+    
+    card.addEventListener('mouseleave', () => {
+      card.style.borderColor = "rgba(255,255,255,0.07)";
+    });
+  });
+</script>

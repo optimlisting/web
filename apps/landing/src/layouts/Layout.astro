@@ -1,5 +1,6 @@
 ---
 import "../styles/global.css";
+import Navbar from "../components/Navbar.astro";
 
 export interface Props {
   title: string;
@@ -52,7 +53,8 @@ const gaId = import.meta.env.PUBLIC_GA_ID;
     <!-- Favicon -->
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
   </head>
-  <body class="font-sans antialiased bg-white text-gray-900">
+  <body class="font-manrope text-foreground antialiased">
+    <Navbar />
     <slot />
     <!-- Loading Overlay -->
     <div id="page-loader" class="fixed inset-0 z-50 bg-white/80 backdrop-blur-sm flex items-center justify-center hidden">
@@ -64,8 +66,8 @@ const gaId = import.meta.env.PUBLIC_GA_ID;
         <p class="text-sm text-gray-600 mt-3 font-medium">Loading...</p>
       </div>
     </div>
-
     <script>
+      // Page loading transitions
       const loader = document.getElementById('page-loader');
       
       // Show loader when clicking any dashboard link

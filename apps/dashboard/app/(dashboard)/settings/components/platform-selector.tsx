@@ -2,10 +2,11 @@
 
 import { useState } from "react";
 import { toast } from "sonner";
-import { Settings } from "lucide-react";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@optim/ui/components/card";
 import { ConfirmDialog } from "@optim/ui/components/confirm-dialog";
 import { Spinner } from "@optim/ui/lib/loading";
+import { getMarketplaceColor } from "@/lib/utils";
+import { Settings, AlertTriangle, Zap, Check } from "lucide-react";
 
 interface PlatformSelectorProps {
   currentPlan: string;
@@ -93,58 +94,72 @@ export function PlatformSelector({ currentPlan, selectedPlatform }: PlatformSele
   return (
     <>
       <Card id="platform-selection">
-        <CardHeader>
-          <CardTitle>Choose Your Platform</CardTitle>
-          <CardDescription>
+        <CardHeader className="border-b border-[rgba(255,255,255,0.07)]">
+          <CardTitle className="font-bricolage font-bold text-foreground">Choose Your Platform</CardTitle>
+          <CardDescription className="text-muted-foreground">
             Your plan includes one platform. Select the marketplace you sell on.
             {current && (
-              <span className="text-amber-600 font-medium block mt-1">
-                This choice is permanent. Contact <a href="mailto:support@optimListing.com" className="font-bold underline">support</a> if you need to change it.
+              <span className="flex items-center gap-1.5 text-xs text-[#F59E0B] block mt-1">
+                <AlertTriangle size={13} />
+                This choice is permanent. Upgrade to <b>Pro</b> to access all platforms.
+                {/* Contact <a href="mailto:support@optimListing.com" className="underline">support</a> if you need to change it. */}
               </span>
             )}
           </CardDescription>
         </CardHeader>
         <CardContent>
-          <div className="grid gap-3">
+          <div className="grid md:grid-cols-2 gap-3">
             {PLATFORMS.map((p) => {
               const isSelected = current === p.id;
               const isDisabled = !p.available || (current !== null && current !== p.id);
+              const color = getMarketplaceColor(p.id);
 
               return (
                 <button
                   key={p.id}
                   onClick={() => !isDisabled && handleRequestChange(p.id)}
                   disabled={isDisabled || loading !== null}
-                  className={`flex items-center gap-3 p-4 rounded-xl border-2 text-left transition ${
-                    isSelected
-                      ? "border-brand-500 bg-brand-50"
-                      : isDisabled
-                      ? "border-gray-100 bg-gray-50 opacity-60 cursor-not-allowed"
-                      : "border-gray-200 hover:border-gray-300 cursor-pointer"
+                  className={`w-full text-left flex items-center gap-4 px-4 py-3.5 rounded-xl border border-muted-foreground transition-all duration-150 ${
+                    isDisabled
+                      ? "opacity-60 cursor-not-allowed hover:opacity-60"
+                      : "cursor-pointer hover:opacity-90"
+                  } ${
+                    isSelected && "hover:opacity-100"
                   }`}
+                  style={{
+                    background: isSelected ? `${color}0D` : "rgba(255,255,255,0.02)",
+                    borderColor: isSelected ? `${color}60` : "rgba(255,255,255,0.07)",
+                  }}
                 >
-                  <Settings
-                    className={`w-5 h-5 ${
-                      isSelected ? "text-brand-600" : "text-gray-400"
-                    }`}
-                  />
+                  <div
+                    className="w-8 h-8 rounded-lg flex items-center justify-center flex-shrink-0"
+                    style={{ background: `${color}18` }}
+                  >
+                    <Zap size={14} style={{ color }} />
+                  </div>
                   <div className="flex-1">
                     <div className="flex items-center gap-2">
-                      <p className="font-medium text-gray-900">{p.label}</p>
+                      <span style={{ color: "#EEF2FF", fontWeight: 600, fontSize: "0.9rem" }}>{p.label}</span>
                       {isSelected && (
-                        <span className="text-xs bg-brand-100 text-brand-700 px-2 py-0.5 rounded-full">
+                        <span
+                          className="px-2 py-0.5 rounded-md text-xs font-bold"
+                          style={{ background: `${color}20`, color }}
+                        >
                           Selected
                         </span>
                       )}
-                      {!p.available && (
-                        <span className="text-xs bg-gray-100 text-gray-600 px-2 py-0.5 rounded-full">
-                          Coming Soon
-                        </span>
-                      )}
                     </div>
-                    <p className="text-sm text-gray-600">{p.description}</p>
+                    <div style={{ color: "#8899BB", fontSize: "0.8rem" }}>{p.description}</div>
                   </div>
-                  {loading === p.id && <Spinner className="w-4 h-4" />}
+                  {isSelected && (
+                    <div
+                      className="w-5 h-5 rounded-full flex items-center justify-center flex-shrink-0"
+                      style={{ background: color }}
+                    >
+                      <Check size={11} strokeWidth={3} className="text-white" />
+                    </div>
+                  )}
+                  {loading === p.id && <Spinner className="w-4 h-4 text-muted-foreground" />}
                 </button>
               );
             })}

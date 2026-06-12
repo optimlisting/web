@@ -1,2 +1,18 @@
 @import "tailwindcss";
 @import "@optim/ui/styles/globals.css";
+@import '@fontsource-variable/manrope/wght.css';
+@import '@fontsource-variable/bricolage-grotesque/standard.css';
+
+@theme {
+  --font-bricolage: "Bricolage Grotesque Variable", sans-serif;
+  --font-manrope: "Manrope Variable", sans-serif;
+}
+
+body {
+  font-synthesis-weight: none;
+  font-synthesis-small-caps: none;
+  font-synthesis-style: none;
+
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}

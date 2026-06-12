@@ -38,6 +38,7 @@ export function ManageBilling({ isPaidPlan }: ManageBillingProps) {
       size="sm"
       onClick={handlePortal}
       disabled={loading}
+      className="bg-transparent p-4 text-muted-foreground"
     >
       {loading ? (
         <Spinner className="w-4 h-4 mr-2" />

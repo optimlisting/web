@@ -1,0 +1,136 @@
+---
+import { Check, Zap } from "@lucide/astro";
+import { PLANS } from "../consts";
+---
+
+<section class="py-24 relative" style={{ background: "#070B18" }}>
+  <div
+    class="absolute top-0 left-0 right-0 h-px"
+    style={{ background: "linear-gradient(90deg, transparent, rgba(124,58,237,0.3), transparent)" }}
+  />
+
+  <div class="max-w-7xl mx-auto px-6">
+    <div class="text-center mb-14">
+      <div
+        class="inline-flex items-center gap-2 px-4 py-1.5 rounded-full border mb-5"
+        style={{ borderColor: "rgba(124,58,237,0.3)", background: "rgba(124,58,237,0.08)" }}
+      >
+        <span style={{ color: "#A78BFA", fontFamily: "'Manrope Variable', sans-serif", fontSize: "0.8rem", fontWeight: 600 }}>PRICING</span>
+      </div>
+      <h2
+        style={{
+          fontFamily: "'Bricolage Grotesque Variable', sans-serif",
+          fontWeight: 800,
+          fontSize: "clamp(2rem, 4vw, 3.2rem)",
+          color: "#EEF2FF",
+          letterSpacing: "-0.02em",
+        }}
+      >
+        Simple, Transparent Pricing
+      </h2>
+      <p
+        class="mt-4 mb-8"
+        style={{ fontFamily: "'Manrope Variable', sans-serif", color: "#8899BB", fontSize: "1rem" }}
+      >
+        Start free. Upgrade when you're ready to scale.
+      </p>
+    </div>
+
+    <div class="grid md:grid-cols-3 gap-5 items-stretch">
+      {PLANS.map((plan, i) => (
+        <div
+          class="relative rounded-2xl p-7 flex flex-col border transition-all duration-200"
+          style={{
+            background: plan.highlight
+              ? "linear-gradient(160deg, rgba(124,58,237,0.18) 0%, rgba(13,19,39,0.95) 100%)"
+              : "rgba(13,19,39,0.6)",
+            borderColor: plan.highlight ? "#7C3AED" : "rgba(255,255,255,0.07)",
+            boxShadow: plan.highlight ? "0 0 60px rgba(124,58,237,0.18)" : "none",
+          }}
+        >
+          {plan.badge && (
+            <div
+              class="absolute -top-3 left-1/2 -translate-x-1/2 px-4 py-1 rounded-full text-xs font-bold"
+              style={{
+                background: "linear-gradient(135deg, #7C3AED, #5B21B6)",
+                color: "#fff",
+                fontFamily: "'Manrope Variable', sans-serif",
+                boxShadow: "0 0 20px rgba(124,58,237,0.5)",
+              }}
+            >
+              ✦ {plan.badge}
+            </div>
+          )}
+
+          <div>
+            <h3
+              class="mb-1"
+              style={{ fontFamily: "'Bricolage Grotesque Variable', sans-serif", fontWeight: 700, fontSize: "1.2rem", color: "#EEF2FF" }}
+            >
+              {plan.name}
+            </h3>
+            <p style={{ fontFamily: "'Manrope Variable', sans-serif", color: "#8899BB", fontSize: "0.85rem", marginBottom: "1.25rem" }}>
+              {plan.desc}
+            </p>
+
+            <div class="flex items-end gap-1 mb-6">
+              <span
+                style={{
+                  fontFamily: "'Bricolage Grotesque Variable', sans-serif",
+                  fontWeight: 800,
+                  fontSize: "3rem",
+                  color: "#EEF2FF",
+                  lineHeight: 1,
+                }}
+              >
+                ${plan.monthlyPrice}
+              </span>
+              <span style={{ fontFamily: "'Manrope Variable', sans-serif", color: "#8899BB", fontSize: "0.9rem", paddingBottom: "0.3rem" }}>
+                {plan.monthlyPrice === 0 ? "/ forever" : "/mo"}
+              </span>
+            </div>
+          </div>
+
+          <ul class="space-y-3 flex-1 mb-7">
+            {plan.features.map((f, fi) => (
+              <li class="flex items-start gap-2.5">
+                <div
+                  class="w-4 h-4 rounded-full flex items-center justify-center flex-shrink-0 mt-0.5"
+                  style={{ background: "rgba(0,229,160,0.15)" }}
+                >
+                  <Check size={10} style={{ color: "#00E5A0" }} stroke-width={3} />
+                </div>
+                <span style={{ fontFamily: "'Manrope Variable', sans-serif", color: "#C4D0F0", fontSize: "0.88rem" }}>{f}</span>
+              </li>
+            ))}
+          </ul>
+
+          <a
+            href="#"
+            class="w-full flex items-center justify-center gap-2 py-3.5 rounded-xl transition-all duration-200 hover:opacity-90 hover:scale-[1.02]"
+            style={{
+              background: plan.highlight
+                ? "linear-gradient(135deg, #7C3AED, #5B21B6)"
+                : "rgba(255,255,255,0.07)",
+              color: "#fff",
+              fontFamily: "'Manrope Variable', sans-serif",
+              fontWeight: 600,
+              fontSize: "0.95rem",
+              boxShadow: plan.highlight ? "0 0 24px rgba(124,58,237,0.4)" : "none",
+            }}
+          >
+            {plan.highlight && <Zap size={16} />}
+            {plan.cta}
+          </a>
+        </div>
+      ))}
+    </div>
+
+    <!-- <p
+      class="text-center mt-8"
+      style={{ fontFamily: "'Manrope Variable', sans-serif", color: "#8899BB", fontSize: "0.85rem" }}
+    >
+      All paid plans include a 14-day free trial. No credit card required to start.
+    </p> -->
+  </div>
+</section>

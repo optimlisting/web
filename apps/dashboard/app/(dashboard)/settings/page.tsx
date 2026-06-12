@@ -12,6 +12,7 @@ export default async function SettingsPage() {
     redirect("/sign-in");
   }
 
+  const allPlans = PLANS
   const subscription = await getSubscription(session.user.id!);
   const currentPlan = (subscription?.plan || "FREE") as PlanKey;
   const planConfig = PLANS[currentPlan];
@@ -19,6 +20,7 @@ export default async function SettingsPage() {
 
   return (
     <SettingsClient
+      plans={allPlans}
       user={{
         id: session.user.id!,
         name: session.user.name || "User",

@@ -6,32 +6,11 @@ import Layout from '../layouts/Layout.astro';
   title="Privacy Policy"
   description="OptimListing Privacy Policy"
 >
-  <!-- Navigation -->
-  <nav class="border-b border-gray-100">
-    <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
-      <div class="flex justify-between items-center h-16">
-        <a href="/" class="flex items-center gap-1.5">
-          <img src="/optim-logo.svg" alt="OptimListing" class="h-6" />
-          <span class="text-xl font-bold text-brand-600">OptimListing</span>
-        </a>
-        <div class="hidden sm:flex items-center gap-6">
-          <a href="/#features" class="text-sm text-gray-600 hover:text-gray-900 transition">Features</a>
-          <a href="/#pricing" class="text-sm text-gray-600 hover:text-gray-900 transition">Pricing</a>
-          <a href="/#faq" class="text-sm text-gray-600 hover:text-gray-900 transition">FAQ</a>
-          <a href="/dashboard/sign-in" class="text-sm font-medium text-brand-600 hover:text-brand-700 transition">Sign In</a>
-          <a href="/dashboard/signup" class="text-sm font-medium bg-brand-600 text-white px-4 py-2 rounded-lg hover:bg-brand-700 transition">
-            Start Free
-          </a>
-        </div>
-      </div>
-    </div>
-  </nav>
+  <div class="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8 py-24">
+    <h1 class="text-3xl font-bricolage font-bold text-foreground mb-8">Privacy Policy</h1>
+    <p class="text-sm text-muted-foreground mb-8">Last updated: May 2026</p>
 
-  <div class="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
-    <h1 class="text-3xl font-bold text-gray-900 mb-8">Privacy Policy</h1>
-    <p class="text-sm text-gray-500 mb-8">Last updated: May 2026</p>
-
-    <div class="prose prose-sm max-w-none space-y-6">
+    <div class="prose prose-sm text-muted-foreground max-w-none space-y-6">
       <h2>1. Information We Collect</h2>
       <p>
         When you use OptimListing, we collect the following information:
@@ -81,3 +60,11 @@ import Layout from '../layouts/Layout.astro';
     </div>
   </div>
 </Layout>
+<style>
+  strong {
+    color: var(--text-muted-foreground);
+  }
+  h2, a {
+    color: var(--color-foreground);
+  }
+</style>

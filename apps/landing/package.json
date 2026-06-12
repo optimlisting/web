@@ -13,7 +13,11 @@
   },
   "dependencies": {
     "@astrojs/partytown": "^2.1.7",
+    "@fontsource-variable/bricolage-grotesque": "^5.2.10",
+    "@fontsource-variable/manrope": "^5.2.8",
+    "@fontsource/bricolage-grotesque": "^5.2.10",
     "@fontsource/inter": "^5.2.8",
+    "@lucide/astro": "^1.17.0",
     "@tailwindcss/vite": "^4.2.4",
     "astro": "^6.1.10",
     "tailwindcss": "^4.2.4"

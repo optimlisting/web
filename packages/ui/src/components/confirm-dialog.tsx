@@ -76,22 +76,23 @@ export function ConfirmDialog({
       >
         <DialogHeader>
           <div className="flex items-center gap-3">
-            <div className="w-10 h-10 rounded-full bg-red-100 flex items-center justify-center">
-              <AlertTriangle className="w-5 h-5 text-red-600" />
+            <div className="w-10 h-10 rounded-full bg-destructive/18 flex items-center justify-center">
+              <AlertTriangle className="w-5 h-5 text-destructive" />
             </div>
-            <DialogTitle>{title}</DialogTitle>
+            <DialogTitle className="font-bricolage font-bold">{title}</DialogTitle>
           </div>
-          <DialogDescription className="pt-2">{description}</DialogDescription>
+          <DialogDescription className="text-muted-foreground pt-2">{description}</DialogDescription>
         </DialogHeader>
 
         {requireTyping && (
           <div className="space-y-2">
-            <p className="text-sm text-gray-600">
+            <p className="text-sm text-muted-foreground">
               Type{" "}
-              <span className="font-semibold text-gray-900">{requireTyping}</span>{" "}
+              <span className="font-semibold text-foreground">{requireTyping}</span>{" "}
               to confirm:
             </p>
             <Input
+              className="border border-primary py-5"
               value={typed}
               onChange={(e) => setTyped(e.target.value)}
               placeholder={requireTyping}

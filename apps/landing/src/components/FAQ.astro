@@ -1,0 +1,136 @@
+---
+import { ChevronDown } from "@lucide/astro";
+import { FAQS } from "../consts";
+---
+
+<section class="py-24" style={{ background: "#070B18" }}>
+  <div class="max-w-3xl mx-auto px-6">
+    <div class="text-center mb-14">
+      <div
+        class="inline-flex items-center gap-2 px-4 py-1.5 rounded-full border mb-5"
+        style={{ borderColor: "rgba(124,58,237,0.3)", background: "rgba(124,58,237,0.08)" }}
+      >
+        <span style={{ color: "#A78BFA", fontFamily: "'Manrope Variable', sans-serif", fontSize: "0.8rem", fontWeight: 600 }}>FAQ</span>
+      </div>
+      <h2
+        style={{
+          fontFamily: "'Bricolage Grotesque Variable', sans-serif",
+          fontWeight: 800,
+          fontSize: "clamp(2rem, 4vw, 3rem)",
+          color: "#EEF2FF",
+          letterSpacing: "-0.02em",
+        }}
+      >
+        Frequently Asked Questions
+      </h2>
+    </div>
+
+    <div class="space-y-3">
+      {FAQS.map((faq, i) => (
+        <div class="faq-item rounded-xl border overflow-hidden transition-all duration-200 bg-[rgba(13,19,39,0.5)]">
+          <button
+            class="faq-button w-full text-left px-6 py-5 flex items-center justify-between gap-4 cursor-pointer"
+          >
+            <span
+              style={{
+                fontFamily: "'Manrope Variable', sans-serif",
+                fontWeight: 600,
+                color: "#EEF2FF",
+                fontSize: "0.97rem",
+                lineHeight: 1.4,
+              }}
+            >
+              {faq.q}
+            </span>
+            <ChevronDown
+              class="chevron-icon"
+              size={18}
+              style={{
+                color: "#7C3AED",
+                flexShrink: 0,
+                transition: "transform 0.2s ease",
+              }}
+            />
+          </button>
+
+          <div class="faq-answer-wrapper h-0 overflow-hidden"
+            style={{
+              transition: "height 0.3s ease-out",
+              height: i === 0 && "auto"
+            }}
+          >
+            <div class="faq-answer-content px-6 pb-5">
+              <p
+                class="faq-answer-text"
+                style={{
+                  fontFamily: "'Manrope Variable', sans-serif",
+                  color: "#8899BB",
+                  fontSize: "0.92rem",
+                  lineHeight: 1.72,
+                }}
+              >
+                {faq.a}
+              </p>
+            </div>
+          </div>
+        </div>
+      ))}
+    </div>
+  </div>
+</section>
+
+<script type="module">
+  import { animate } from "https://cdn.jsdelivr.net/npm/motion@latest/+esm"
+  
+  const faqItems = document.querySelectorAll('.faq-item');
+  let currentlyOpen = 0;
+  
+  faqItems.forEach((item, index) => {
+    const button = item.querySelector('.faq-button');
+    const chevronIcon = item.querySelector('.chevron-icon')
+    const answerWrapper = item.querySelector('.faq-answer-wrapper');
+    const answerContent = item.querySelector('.faq-answer-content');
+    
+    button.addEventListener('click', async () => {
+      const isOpen = currentlyOpen === index;
+      
+      if (isOpen) {
+        // Close current
+        await animate(answerWrapper, { height: '0px' },{ duration: 0.1 }).finished;
+        await animate(chevronIcon, { rotate: 0 },{ duration: 0.1 }).finished
+        currentlyOpen = null;
+        
+        // Update styles
+        animate(item, {
+          background: 'rgba(13, 19, 39, 0.5)',
+          borderColor: 'rgba(255, 255, 255, 0.07)'
+        }, { duration: 0.2 });
+      } else {
+        // Close previously opened
+        if (currentlyOpen !== null) {
+          const prevItem = faqItems[currentlyOpen];
+          const prevIcon = prevItem.querySelector('.chevron-icon');
+          const prevWrapper = prevItem.querySelector('.faq-answer-wrapper');
+          await animate(prevWrapper, { height: '0px' }, { duration: 0.1 }).finished;
+          await animate(prevIcon, { rotate: 0 }, { duration: 0.1 }).finished;
+          animate(prevItem, {
+            background: 'rgba(13, 19, 39, 0.5)',
+            borderColor: 'rgba(255, 255, 255, 0.07)'
+          }, { duration: 0.2 });
+        }
+        
+        // Open new
+        const height = answerContent.offsetHeight;
+        animate(answerWrapper, { height: `${height}px` }, { duration: 0.1 });
+        animate(chevronIcon, { rotate: 180 }, { duration: 0.1 });
+        currentlyOpen = index;
+        
+        // Update styles
+        animate(item, {
+          background: 'rgba(13, 19, 39, 0.95)',
+          borderColor: 'rgba(124, 58, 237, 0.35)'
+        }, { duration: 0.2 });
+      }
+    });
+  });
+</script>
