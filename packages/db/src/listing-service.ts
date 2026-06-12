@@ -1,6 +1,13 @@
 import { prisma } from "./index";
 import type { Prisma, Listing } from "../generated/prisma/client";
 
+export interface ImprovementBreakdown {
+  label: string;
+  before: string;
+  after: string;
+  good: boolean;
+}
+
 export interface CreateListingInput {
   userId: string;
   marketplace: string;
@@ -12,6 +19,7 @@ export interface CreateListingInput {
   optimizedTags: string[];
   seoScore: number;
   improvements: string[];
+  improvementBreakdown?: ImprovementBreakdown[];
   tokensUsed?: number;
 }
 
@@ -30,6 +38,7 @@ export async function createListing(input: CreateListingInput): Promise<Listing>
       optimizedTags: input.optimizedTags, // Prisma handles string[] natively for this field
       seoScore: input.seoScore,
       improvements: input.improvements,
+      improvementBreakdown: input.improvementBreakdown as any,
       tokensUsed: input.tokensUsed || 0,
     },
   });
@@ -47,6 +56,7 @@ export interface ListingWithParsedTags {
   optimizedTags: string[];
   seoScore: number;
   improvements: string[];
+  improvementBreakdown?: ImprovementBreakdown[];
   tokensUsed: number;
   createdAt: Date;
   updatedAt: Date;
@@ -85,6 +95,7 @@ export async function getListingsByUser(
         ? JSON.parse(listing.originalTags)
         : listing.originalTags
       : null,
+    improvementBreakdown: listing.improvementBreakdown as unknown as ImprovementBreakdown[] | undefined,
   }));
 
   return {
@@ -108,6 +119,7 @@ export async function getListingById(id: string, userId: string) {
         ? JSON.parse(listing.originalTags)
         : listing.originalTags
       : null,
+    improvementBreakdown: listing.improvementBreakdown as unknown as ImprovementBreakdown[] | undefined,
   } as ListingWithParsedTags;
 }
 
