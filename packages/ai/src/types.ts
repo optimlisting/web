@@ -8,11 +8,19 @@ export interface ListingInput {
   marketplace: Marketplace;
 }
 
+export interface ImprovementBreakdown {
+  label: string;
+  before: string;
+  after: string;
+  good: boolean;
+}
+
 export interface OptimizedListing {
   title: string;
   description: string;
   tags: string[];
   improvements: string[];
+  improvementBreakdown?: ImprovementBreakdown[];
   seoScore: number;
 }
 

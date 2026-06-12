@@ -52,6 +52,7 @@ export async function optimizeListing(input: ListingInput): Promise<Optimization
         description: parsed.description || input.description,
         tags: Array.isArray(parsed.tags) ? parsed.tags : [],
         improvements: Array.isArray(parsed.improvements) ? parsed.improvements : [],
+        improvementBreakdown: Array.isArray(parsed.improvementBreakdown) ? parsed.improvementBreakdown : [],
         seoScore: typeof parsed.seoScore === "number" ? parsed.seoScore : 0,
       },
       tokensUsed: response.usage?.total_tokens || 0,

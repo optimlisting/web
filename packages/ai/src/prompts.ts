@@ -48,6 +48,11 @@ TASKS:
 3. Generate exactly 13 optimized tags for Etsy (or relevant tag equivalents for other platforms)
 4. Calculate a mock SEO score (0-100) based on keyword usage, length, and structure
 5. List 3-5 specific improvements made
+6. Create a detailed improvements breakdown array with 4 specific items, Each item must have:
+   - label: A short name for the improvement which are ("Keyword Density", "Title Length", "Tag slots used", "Buyer intent match")
+   - before: The original state (e.g., "Low", "22 chars", "3/13", "weak or medium or strong")
+   - after: The optimized state (e.g., "High", "128 chars", "13/13", "Strong")
+   - good: true if this improvement positively impacts SEO, always true
 
 FORMAT YOUR RESPONSE EXACTLY AS JSON:
 {
@@ -59,7 +64,13 @@ FORMAT YOUR RESPONSE EXACTLY AS JSON:
     "Added high-volume keyword X in title",
     "Expanded description with benefit-focused copy",
     ...
-  ]
+  ],
+  "improvementBreakdown": [
+    { label: "Keyword density", before: "Low", after: "High", good: true },
+    { label: "Title length", before: "22 chars", after: "128 chars", good: true },
+    { label: "Tag slots used", before: "3/13", after: "8/13", good: true },
+    { label: "Buyer intent match", before: "Weak", after: "Strong", good: true }
+  ],
 }`;
 }
 
