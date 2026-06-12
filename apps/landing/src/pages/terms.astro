@@ -1,5 +1,6 @@
 ---
 import Layout from '../layouts/Layout.astro';
+import { ArrowLeft } from '@lucide/astro';
 ---
 
 <Layout
@@ -7,6 +8,9 @@ import Layout from '../layouts/Layout.astro';
   description="OptimListing Terms of Service"
 >
   <div class="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8 py-24">
+    <a href="/" class="flex items-center gap-2 mb-2 text-sm !text-muted-foreground hover:!text-foreground transition duration-150">
+      <ArrowLeft class="w-4 h-auto" /> back to homepage
+    </a>
     <h1 class="text-3xl font-bricolage font-bold text-foreground mb-8">Terms of Service</h1>
     <p class="text-sm text-muted-foreground mb-8">Last updated: May 2026</p>
 
