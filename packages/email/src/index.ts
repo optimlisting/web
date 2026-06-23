@@ -1,12 +1,31 @@
 import { Resend } from "resend";
 import { WelcomeEmail } from "./templates/welcome";
 import { ResetPasswordEmail } from "./templates/reset-password";
+import { VerifyEmail } from "./templates/verify-email";
 
 const resend = process.env.RESEND_API_KEY
   ? new Resend(process.env.RESEND_API_KEY)
   : null;
 
 const FROM_EMAIL = "OptimListing <hello@optimlisting.com>";
+
+export async function sendVerificationEmail(email: string, name: string, verificationUrl: string) {
+  if (!resend) {
+    console.log("[EMAIL] Skipping verification — RESEND_API_KEY not set");
+    return;
+  }
+
+  try {
+    await resend.emails.send({
+      from: FROM_EMAIL,
+      to: email,
+      subject: `Verify your email for Optimlisting`,
+      react: VerifyEmail({ name, verificationUrl }),
+    });
+  } catch (error) {
+    console.error("[EMAIL] Failed to send verification:", error);
+  }
+}
 
 export async function sendWelcomeEmail(email: string, name: string) {
   if (!resend) {

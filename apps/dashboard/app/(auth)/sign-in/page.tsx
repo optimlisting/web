@@ -58,7 +58,12 @@ export default function SignIn() {
       });
 
       if (result.error) {
-        setServerError("Invalid email or password");
+        if (result.error.message?.includes("email not verified") || 
+          result.error.message?.includes("verify")) {
+          setServerError("Please verify your email before signing in. Check your inbox for the verification link.");
+        } else {
+          setServerError("Invalid email or password");
+        }
         setLoading(false);
         return;
       }

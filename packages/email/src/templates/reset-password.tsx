@@ -16,12 +16,12 @@ import {
 } from 'react-email';
 import { EmailFonts } from '../theme-fonts';
 
-interface WelcomeEmailProps {
+interface ResetEmailProps {
   name: string;
   resetUrl: string;
 }
 
-export const ResetPasswordEmail = ({ name, resetUrl }: WelcomeEmailProps) => (
+export const ResetPasswordEmail = ({ name, resetUrl }: ResetEmailProps) => (
   <Tailwind>
     <Html>
       <Head>

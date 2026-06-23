@@ -2,7 +2,7 @@ import { betterAuth } from "better-auth";
 import { prismaAdapter } from "better-auth/adapters/prisma";
 import { nextCookies } from "better-auth/next-js";
 import { prisma } from "@optim/db";
-import { sendWelcomeEmail, sendPasswordResetEmail } from "@optim/email";
+import { sendWelcomeEmail, sendPasswordResetEmail, sendVerificationEmail } from "@optim/email";
 import { headers } from "next/headers";
 
 export const auth = betterAuth({
@@ -14,15 +14,21 @@ export const auth = betterAuth({
   secret: process.env.BETTER_AUTH_SECRET!,
   emailAndPassword: {
     enabled: true,
+    requireEmailVerification: true,
     sendResetPassword: async ({ user, url }) => {
-      // Better-Auth generates the URL — we just send it
-      await sendPasswordResetEmail(
+      void sendPasswordResetEmail(
         user.email,
         user.name || "there",
         url
       );
     },
     revokeSessionsOnPasswordReset: true
+  },
+  emailVerification: {
+    sendVerificationEmail: async ({ user, url }) => {
+      void sendVerificationEmail(user.email, user.name || "there", url);
+    },
+    autoSignInAfterVerification: true,
   },
   socialProviders: {
     google: {
