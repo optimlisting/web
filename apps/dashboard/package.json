@@ -22,6 +22,7 @@
     "@optim/subscription": "workspace:*",
     "@optim/ui": "workspace:*",
     "@optimlisting/ai": "workspace:*",
+    "@optim/ratelimit": "workspace:*",
     "bcryptjs": "^3.0.3",
     "better-auth": "^1.6.9",
     "lucide-react": "^1.14.0",

@@ -15,7 +15,8 @@ export const auth = betterAuth({
   emailAndPassword: {
     enabled: true,
     requireEmailVerification: true,
-    sendResetPassword: async ({ user, url }) => {
+    sendResetPassword: async ({ user, token }) => {
+      const url = `${process.env.BETTER_AUTH_URL}/dashboard/reset-password?token=${token}`
       void sendPasswordResetEmail(
         user.email,
         user.name || "there",
@@ -25,7 +26,8 @@ export const auth = betterAuth({
     revokeSessionsOnPasswordReset: true
   },
   emailVerification: {
-    sendVerificationEmail: async ({ user, url }) => {
+    sendVerificationEmail: async ({ user, token }) => {
+      const url = `${process.env.BETTER_AUTH_URL}/dashboard/api/auth/verify-email?token=${token}&callbackURL=/dashboard`
       void sendVerificationEmail(user.email, user.name || "there", url);
     },
     autoSignInAfterVerification: true,

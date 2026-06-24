@@ -1,7 +1,23 @@
 import { auth } from "@optim/auth";
 import { toNextJsHandler } from "better-auth/next-js";
-// import { NextRequest } from "next/server";
+import { authRateLimit } from "@optim/ratelimit";
+import { createRateLimitMiddleware } from "@optim/ratelimit/src/middleware";
 
-const handlers = toNextJsHandler(auth);
+export const { GET: _GET, POST: _POST } = toNextJsHandler(auth);
 
-export const { GET, POST } = toNextJsHandler(auth);
+const rateLimitCheck = createRateLimitMiddleware({
+  limiter: authRateLimit,
+  identifier: (req) => req.headers.get("x-forwarded-for") || "anonymous",
+});
+
+export async function GET(request: Request) {
+  const rateLimitResponse = await rateLimitCheck(request as any);
+  if (rateLimitResponse) return rateLimitResponse;
+  return _GET(request);
+}
+
+export async function POST(request: Request) {
+  const rateLimitResponse = await rateLimitCheck(request as any);
+  if (rateLimitResponse) return rateLimitResponse;
+  return _POST(request);
+}

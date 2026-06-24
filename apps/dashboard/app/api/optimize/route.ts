@@ -1,11 +1,18 @@
 import { NextResponse } from "next/server";
+import { optimizeRateLimit } from "@optim/ratelimit";
+import { createRateLimitMiddleware } from "@optim/ratelimit/src/middleware";
 import { getSession } from "@optim/auth";
 import { optimizeListing, ListingInput } from "@optimlisting/ai";
 import { getUsageLimit, trackUsage } from "@optim/subscription";
 import { checkPlatformAccess } from "@optim/subscription/src/platform-guard";
 import { createListing } from "@optim/db/listing-service";
 
+const rateLimitCheck = createRateLimitMiddleware({ limiter: optimizeRateLimit });
+
 export async function POST(request: Request) {
+  const rateLimitResponse = await rateLimitCheck(request as any);
+  if (rateLimitResponse) return rateLimitResponse;
+  
   const session = await getSession();
 
   if (!session?.user) {
